@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
 
 const container = {
   initial: {
@@ -36,6 +35,37 @@ const fadeIn = {
     y: 24,
   },
 };
+
+function HomeNavigationSection({
+  title,
+  items,
+}: Readonly<{
+  title: string;
+  items: [key: string, link: string][];
+}>) {
+  return (
+    <motion.div variants={fadeIn}>
+      <div className="grid grid-cols-2 gap-4">
+        <div className="opacity-50 p-1">{title}</div>
+        <div className=" flex flex-col gap-3">
+          {items.map(
+            ([key, link]) => (
+              console.log(key, link),
+              (
+                <Link
+                  className="transition p-1 duration-300 ease-in-out hover:bg-black hover:text-white cursor-pointer"
+                  href={link}
+                >
+                  {key}
+                </Link>
+              )
+            )
+          )}
+        </div>
+      </div>
+    </motion.div>
+  );
+}
 
 export default function Home() {
   return (
@@ -77,7 +107,7 @@ export default function Home() {
   );
 }
 
-export function HomeNavigationHero() {
+function HomeNavigationHero() {
   return (
     <motion.div variants={fadeIn} className="flex flex-col gap-1">
       <div>Raphael Salaja</div>
@@ -88,37 +118,6 @@ export function HomeNavigationHero() {
         an individual who defies traditional categorisation within creative
         endeavours, blending diverse influences and mediums to produce
         innovative works.
-      </div>
-    </motion.div>
-  );
-}
-
-export function HomeNavigationSection({
-  title,
-  items,
-}: Readonly<{
-  title: string;
-  items: [key: string, link: string][];
-}>) {
-  return (
-    <motion.div variants={fadeIn}>
-      <div className="grid grid-cols-2 gap-4">
-        <div className="opacity-50 p-1">{title}</div>
-        <div className=" flex flex-col gap-3">
-          {items.map(
-            ([key, link]) => (
-              console.log(key, link),
-              (
-                <Link
-                  className="transition p-1 duration-300 ease-in-out hover:bg-black hover:text-white cursor-pointer"
-                  href={link}
-                >
-                  {key}
-                </Link>
-              )
-            )
-          )}
-        </div>
       </div>
     </motion.div>
   );
