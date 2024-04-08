@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
 
 const container = {
   initial: {
@@ -11,13 +10,15 @@ const container = {
     y: 0,
     transition: {
       staggerChildren: 0.1,
-      delayChildren: 0.3,
+      delayChildren: 0.75,
+      type: "spring",
     },
   },
   exit: {
     y: 24,
     transition: {
       staggerChildren: 0.1,
+      type: "spring",
     },
   },
 };
@@ -37,6 +38,26 @@ const fadeIn = {
   },
 };
 
+function HomeNavigationHero() {
+  return (
+    <motion.div className="flex flex-col gap-1 p-1">
+      <motion.div variants={fadeIn}>Raphael Salaja</motion.div>
+      <motion.div variants={fadeIn} className="text-justify  t">
+        <span className="opacity-50">
+          genreless creator / (ˈʒɑːnrəlɪs krɪˈeɪtər) / noun/
+        </span>
+      </motion.div>
+      <motion.div variants={fadeIn} className="opacity-50 text-justify">
+        <span className="opacity-50">
+          an individual who defies traditional categorisation within creative
+          endeavours, blending diverse influences and mediums to produce
+          innovative works.
+        </span>
+      </motion.div>
+    </motion.div>
+  );
+}
+
 function HomeNavigationSection({
   title,
   items,
@@ -45,25 +66,30 @@ function HomeNavigationSection({
   items: [key: string, link: string][];
 }>) {
   return (
-    <motion.div variants={fadeIn}>
-      <div className="grid grid-cols-2 gap-4">
-        <div className="opacity-50 p-1">{title}</div>
-        <div className=" flex flex-col gap-3">
-          {items.map(
-            ([key, link]) => (
-              console.log(key, link),
-              (
-                <Link
-                  className="transition p-1 duration-300 ease-in-out hover:bg-black hover:text-white cursor-pointer"
-                  href={link}
-                >
-                  {key}
-                </Link>
-              )
-            )
-          )}
-        </div>
-      </div>
+    <motion.div>
+      <motion.div className="grid grid-cols-2 gap-4">
+        <motion.div variants={fadeIn} className="p-1">
+          <span className="opacity-50">{title}</span>
+        </motion.div>
+        <motion.div className="flex flex-col gap-3">
+          {items.map(([key, link]) => (
+            <a href={link} target="_blank">
+              <motion.div
+                className="p-1"
+                whileHover={{
+                  scale: 1.1,
+                  cursor: "pointer",
+                  color: "rgba(255, 255, 255, 1)",
+                  backgroundColor: "rgba(0, 0, 0, 1)",
+                }}
+                variants={fadeIn}
+              >
+                {key}
+              </motion.div>
+            </a>
+          ))}
+        </motion.div>
+      </motion.div>
     </motion.div>
   );
 }
@@ -93,7 +119,7 @@ export default function Home() {
               title="Social"
               items={[
                 ["Email", "mailto:raphaelsalaja@gmail.com"],
-                ["Bento", "https://bento.cool/raphaelsalaja"],
+                ["Bento", "https://bento.me/raphaelsalaja"],
                 ["Twitter", "https://twitter.com/raphaelsalaja"],
                 ["Instagram", "https://instagram.com/raphaelsalaja"],
                 ["Youtube", "https://youtube.com/raphaelsalaja"],
@@ -104,22 +130,6 @@ export default function Home() {
           </motion.div>
         </motion.div>
       </motion.div>
-    </motion.div>
-  );
-}
-
-function HomeNavigationHero() {
-  return (
-    <motion.div variants={fadeIn} className="flex flex-col gap-1">
-      <div>Raphael Salaja</div>
-      <div className="opacity-50 text-justify">
-        genreless creator / (ˈʒɑːnrəlɪs krɪˈeɪtər) / noun
-      </div>
-      <div className="opacity-50 text-justify">
-        an individual who defies traditional categorisation within creative
-        endeavours, blending diverse influences and mediums to produce
-        innovative works.
-      </div>
     </motion.div>
   );
 }
