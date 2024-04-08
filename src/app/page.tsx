@@ -110,22 +110,28 @@ export default function Home() {
             <HomeNavigationSection
               title="Work"
               items={[
-                ["Experiments", "/experiments"],
-                ["Projects", "/projects"],
-                ["Pursuits", "/pursuits"],
-                ["Journey", "/journey"],
+                {
+                  key: "Experiments",
+                  link: "https://raphaelsalaja.com/experiments",
+                },
+                { key: "Projects", link: "https://raphaelsalaja.com/projects" },
+                { key: "Pursuits", link: "https://raphaelsalaja.com/pursuits" },
+                { key: "Journey", link: "https://raphaelsalaja.com/journey" },
               ]}
             />
             <HomeNavigationSection
               title="Social"
               items={[
-                ["Email", "mailto:raphaelsalaja@gmail.com"],
-                ["Bento", "https://bento.me/raphaelsalaja"],
-                ["Twitter", "https://twitter.com/raphaelsalaja"],
-                ["Instagram", "https://instagram.com/raphaelsalaja"],
-                ["Youtube", "https://youtube.com/raphaelsalaja"],
-                ["Github", "https://github.com/rafunderscore"],
-                ["Zora", "https://zora.co/@raphaelsalaja"],
+                { key: "Email", link: "mailto:raphaelsalaja@gmail.com" },
+                { key: "Bento", link: "https://bento.me/raphaelsalaja" },
+                { key: "Twitter", link: "https://twitter.com/raphaelsalaja" },
+                {
+                  key: "Instagram",
+                  link: "https://instagram.com/raphaelsalaja",
+                },
+                { key: "Youtube", link: "https://youtube.com/raphaelsalaja" },
+                { key: "Github", link: "https://github.com/rafunderscore" },
+                { key: "Zora", link: "https://zora.co/@raphaelsalaja" },
               ]}
             />
           </motion.div>
