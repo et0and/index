@@ -63,7 +63,7 @@ function HomeNavigationSection({
   items,
 }: Readonly<{
   title: string;
-  items: [key: string, link: string][];
+  items: { key: string; link: string }[];
 }>) {
   return (
     <motion.div>
@@ -72,9 +72,10 @@ function HomeNavigationSection({
           <span className="opacity-50">{title}</span>
         </motion.div>
         <motion.div className="flex flex-col gap-3">
-          {items.map(([key, link]) => (
-            <a href={link} target="_blank">
+          {items.map(({ key, link }, index) => (
+            <a key={index} href={link} target="_blank">
               <motion.div
+                key={key}
                 className="p-1"
                 whileHover={{
                   scale: 1.1,
