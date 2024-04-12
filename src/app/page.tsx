@@ -1,6 +1,5 @@
 "use client";
 
-import { container, fadeIn } from "@/components/home/motion-variants";
 import { Separator } from "@/components/ui/separator";
 import {
   EnvelopeClosedIcon,
@@ -12,6 +11,42 @@ import {
 } from "@radix-ui/react-icons";
 import { motion } from "framer-motion";
 
+const container = {
+  initial: {
+    y: 24,
+  },
+  animate: {
+    y: 0,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.75,
+      type: "spring",
+    },
+  },
+  exit: {
+    y: 24,
+    transition: {
+      staggerChildren: 0.1,
+      type: "spring",
+    },
+  },
+};
+
+const slide = {
+  initial: {
+    opacity: 0,
+    y: 24,
+  },
+  animate: {
+    opacity: 1,
+    y: 0,
+  },
+  exit: {
+    opacity: 0,
+    y: 24,
+  },
+};
+
 export default function Home() {
   return (
     <motion.div
@@ -21,7 +56,7 @@ export default function Home() {
       exit="exit"
       className="flex flex-col gap-8"
     >
-      <motion.div variants={fadeIn} className="flex flex-col gap-2">
+      <motion.div variants={slide} className="flex flex-col gap-2">
         <span>Raphael Salaja</span>
         <span className="text-muted">
           Genreless Creator
@@ -44,14 +79,14 @@ export default function Home() {
         </div>
       </motion.div>
 
-      <motion.div variants={fadeIn} className="flex flex-col gap-2">
+      <motion.div variants={slide} className="flex flex-col gap-2">
         <span>Today</span>
         <span className="text-muted">
           Working on Whim, a new haven for creators
         </span>
       </motion.div>
 
-      <motion.div variants={fadeIn} className="flex flex-col gap-2">
+      <motion.div variants={slide} className="flex flex-col gap-2">
         <span>Contact</span>
         <span className="text-muted">
           Reach me at{" "}
@@ -86,9 +121,8 @@ export default function Home() {
             text="Github"
             link="https://github.com/rafunderscore"
           />
-          . If you're interested in owning a piece Github. If you're interested
-          in owning a piece of my work, you can check out my pursuits into
-          generative art on {""}
+          . If you are interested in owning a piece of my work, you can check
+          out my pursuits into generative art on {""}
           <ParagraphLink
             icon={<ShadowInnerIcon />}
             text="Zora"
@@ -98,7 +132,7 @@ export default function Home() {
         </span>
       </motion.div>
 
-      <motion.div variants={fadeIn} className="flex flex-col gap-2">
+      <motion.div variants={slide} className="flex flex-col gap-2">
         <Separator />
         <span className="text-muted text-xs font-light">
           This is a living document and will be updated as I continue to create
