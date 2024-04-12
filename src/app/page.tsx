@@ -145,7 +145,7 @@ export default function Home() {
   );
 }
 
-export function ParagraphLink({
+function ParagraphLink({
   icon,
   text,
   link,
