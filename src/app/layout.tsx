@@ -1,9 +1,6 @@
-import { ThemeProvider } from "@/components/theme-provider";
 import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Raphael Salaja",
@@ -11,23 +8,17 @@ export const metadata: Metadata = {
     "Genreless creator ― blending diverse influences and mediums to produce innovative works.",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {children}
-          <Analytics />
-        </ThemeProvider>
+      <body className="flex justify-center items-center h-screen w-screen mx-auto max-w-[512px]">
+        {children}
+        <div className="absolute bottom-0 right-0 p-2 text-xs text-muted"></div>
+        <Analytics />
       </body>
     </html>
   );
