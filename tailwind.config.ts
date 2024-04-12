@@ -72,7 +72,7 @@ const config: Config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [],
   extensionsToTreatAsEsm: [".tsx"],
 };
 export default config;

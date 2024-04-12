@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     "Genreless creator ― blending diverse influences and mediums to produce innovative works.",
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
