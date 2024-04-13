@@ -112,7 +112,7 @@ export default function Home() {
           <ParagraphLink
             icon={<VideoIcon />}
             text="Youtube"
-            link="https://youtube.com/raphaelsalaja"
+            link="https://youtube.com/@raphaelsalaja"
           />
           . All (or most) of my work is open source and accessible to everyone
           on {""}
