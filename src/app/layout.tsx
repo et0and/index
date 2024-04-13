@@ -1,7 +1,7 @@
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import "./globals.css";
-
 export const metadata: Metadata = {
   title: "Raphael Salaja",
   description:
@@ -19,6 +19,7 @@ export default function RootLayout({
         {children}
         <div className="absolute bottom-0 right-0 p-2 text-xs text-muted"></div>
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
