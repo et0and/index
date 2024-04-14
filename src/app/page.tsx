@@ -54,7 +54,7 @@ export default function Home() {
       initial="initial"
       animate="animate"
       exit="exit"
-      className="flex flex-col gap-8  text-justify"
+      className="flex flex-col gap-8 text-justify"
     >
       <motion.div variants={slide} className="flex flex-col gap-2">
         <span>Raphael Salaja</span>
