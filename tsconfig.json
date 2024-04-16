@@ -27,7 +27,9 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "src/app/experiments/page.mdx",
-    "src/app/api/route.js"
+    "src/app/api/route.js",
+    "src/lib/utils/arena/api.ts",
+    "src/components/arena/graph.tsx"
   ],
   "exclude": ["node_modules"]
 }

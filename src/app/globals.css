@@ -39,6 +39,12 @@
     font-size: 14px;
     line-height: 1.5rem;
   }
+
+
+}
+
+.scene-tooltip {
+  display: none;
 }
 
 @layer utilities {
