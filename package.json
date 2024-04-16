@@ -30,6 +30,7 @@
     "@vercel/speed-insights": "^1.0.10",
     "are.na": "^0.1.5",
     "axios": "^1.6.8",
+    "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "cmdk": "^1.0.0",
     "d3": "^7.9.0",
