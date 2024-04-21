@@ -99,7 +99,7 @@ export default function ArenaGraph() {
 	)
 }
 
-export function Home() {
+function Home() {
 	return (
 		<Button variant="outline" size="icon" className="rounded-none">
 			<ArenaIcon className="h-5 w-5" />
@@ -107,7 +107,7 @@ export function Home() {
 	)
 }
 
-export function Download() {
+function Download() {
 	return (
 		<Button type="submit" variant="outline" size="icon" className="rounded-none">
 			<DownloadIcon />
@@ -115,7 +115,7 @@ export function Download() {
 	)
 }
 
-export function Dropdown() {
+function Dropdown() {
 	return (
 		<DropdownMenu>
 			<DropdownMenuTrigger asChild>
@@ -132,7 +132,7 @@ export function Dropdown() {
 	)
 }
 
-export function Version() {
+function Version() {
 	return (
 		<Button variant="outline" size="icon" className="rounded-none">
 			<div className="flex items-center opacity-50">
