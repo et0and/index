@@ -131,13 +131,3 @@ function Dropdown() {
 		</DropdownMenu>
 	)
 }
-
-function Version() {
-	return (
-		<Button variant="outline" size="icon" className="rounded-none">
-			<div className="flex items-center opacity-50">
-				<span className="text-xs font-medium italic">v1.0</span>
-			</div>
-		</Button>
-	)
-}

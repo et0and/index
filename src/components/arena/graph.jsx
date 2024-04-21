@@ -8,10 +8,10 @@ export const ArenaForceGraph = ({ data }) => {
 	const [selectedNode, setSelectedNode] = useState()
 
 	useEffect(() => {
-		if (reference.current) {
+		if (reference.current && reference.current.d3Force) {
 			reference.current.d3Force('charge').strength(-50).distanceMax(100)
 		}
-	}, [])
+	}, [reference])
 
 	const handleClick = useCallback(
 		(node) => {
