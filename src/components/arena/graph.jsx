@@ -1,12 +1,11 @@
-import { Node } from '@/lib/utils/arena/arena'
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useRef, useState } from 'react'
 import { ForceGraph3D } from 'react-force-graph'
 import { Mesh, Sprite, SpriteMaterial, TextureLoader } from 'three'
 import SpriteText from 'three-spritetext'
 
-export const ArenaForceGraph = ({ data }: { data: any }) => {
-	const reference = useRef<any>()
-	const [selectedNode, setSelectedNode] = useState<any>()
+export const ArenaForceGraph = ({ data }) => {
+	const reference = useRef()
+	const [selectedNode, setSelectedNode] = useState()
 
 	useEffect(() => {
 		if (reference.current) {
@@ -15,7 +14,7 @@ export const ArenaForceGraph = ({ data }: { data: any }) => {
 	}, [])
 
 	const handleClick = useCallback(
-		(node: { id: string; x: number; y: number; z: number; url: string }) => {
+		(node) => {
 			const distance = 100
 			const distRatio = 1 + distance / Math.hypot(node.x, node.y, node.z)
 
@@ -44,7 +43,7 @@ export const ArenaForceGraph = ({ data }: { data: any }) => {
 		[reference, selectedNode]
 	)
 
-	const channel = (node: Node) => {
+	const channel = (node) => {
 		const spriteText = new SpriteText()
 
 		spriteText.text = node.name ?? ''
@@ -58,7 +57,7 @@ export const ArenaForceGraph = ({ data }: { data: any }) => {
 		return spriteText
 	}
 
-	const block = (node: Node) => {
+	const block = (node) => {
 		const mesh = new Mesh()
 		const sprite = new Sprite()
 		const texture = new TextureLoader().load(node.image ?? '', (tex) => {
@@ -76,7 +75,7 @@ export const ArenaForceGraph = ({ data }: { data: any }) => {
 		return mesh
 	}
 
-	const text = (node: Node) => {
+	const text = (node) => {
 		const spriteText = new SpriteText()
 
 		spriteText.text = node.content ?? ''
@@ -96,7 +95,7 @@ export const ArenaForceGraph = ({ data }: { data: any }) => {
 			linkColor={() => 'rgba(0,0,0,1)'}
 			backgroundColor={'rgba(0,0,0,0)'}
 			onNodeClick={handleClick}
-			nodeThreeObject={(node: Node) => {
+			nodeThreeObject={(node) => {
 				switch (node.class) {
 					case 'Text':
 						return text(node)
