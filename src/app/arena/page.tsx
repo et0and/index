@@ -1,12 +1,8 @@
 'use client'
 
-import { ArenaForceGraph } from '@/components/arena/graph'
-import { GraphSearch } from '@/components/arena/instruments/graph-search'
-import { ArenaIcon } from '@/components/svgs/arena'
-import { Button } from '@/components/ui/button'
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
-import { DownloadIcon, HamburgerMenuIcon } from '@radix-ui/react-icons'
+import { Download, Dropdown, Home, Search } from '@/components/graph/graph-instruments'
 import { AnimatePresence, motion } from 'framer-motion'
+import dynamic from 'next/dynamic'
 import { useState } from 'react'
 
 export type ArenaGraphState = 'idle' | 'loading' | 'connections'
@@ -19,6 +15,11 @@ export default function ArenaGraph() {
 		setSearchData(data)
 		setState('connections')
 	}
+
+	const ArenaForceGraph = dynamic(() => import('@/components/graph/graph').then((module) => module.ArenaForceGraph), {
+		loading: () => <p>Loading...</p>,
+		ssr: false, // Render this component only on the client-side
+	})
 
 	return (
 		<AnimatePresence>
@@ -40,7 +41,7 @@ export default function ArenaGraph() {
 						<div className="flex justify-between">
 							<div className="flex gap-2">
 								<Home />
-								<GraphSearch onDataReceived={handleDataReceived} />
+								<Search onDataReceived={handleDataReceived} />
 							</div>
 							<div className="flex gap-2">
 								<Download />
@@ -95,38 +96,5 @@ export default function ArenaGraph() {
 				</div>
 			</motion.div>
 		</AnimatePresence>
-	)
-}
-
-function Home() {
-	return (
-		<Button variant="outline" size="icon" className="rounded-none">
-			<ArenaIcon className="h-5 w-5" />
-		</Button>
-	)
-}
-
-function Download() {
-	return (
-		<Button type="submit" variant="outline" size="icon" className="rounded-none">
-			<DownloadIcon />
-		</Button>
-	)
-}
-
-function Dropdown() {
-	return (
-		<DropdownMenu>
-			<DropdownMenuTrigger asChild>
-				<Button variant="outline" size="icon" className="rounded-none">
-					<HamburgerMenuIcon />
-				</Button>
-			</DropdownMenuTrigger>
-			<DropdownMenuContent align="end" sideOffset={8} className="rounded-none">
-				<DropdownMenuItem>GitHub</DropdownMenuItem>
-				<DropdownMenuItem>Twitter</DropdownMenuItem>
-				<DropdownMenuItem>Support Me</DropdownMenuItem>
-			</DropdownMenuContent>
-		</DropdownMenu>
 	)
 }

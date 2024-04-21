@@ -29,7 +29,7 @@
 		"src/app/experiments/page.mdx",
 		"src/app/api/route.js",
 		"src/lib/utils/arena/api.ts",
-		"src/components/arena/graph.jsx",
+		"src/components/graph.jsx",
 		"tailwind.config.js"
 	],
 	"exclude": ["node_modules"]

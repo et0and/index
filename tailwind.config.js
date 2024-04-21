@@ -77,6 +77,5 @@ module.exports = {
 		},
 	},
 	plugins: [],
-	extensionsToTreatAsEsm: ['.tsx'],
 }
 
