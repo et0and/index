@@ -18,7 +18,7 @@
     --primary-foreground: 0 0% 98%;
     --secondary: 240 4.8% 95.9%;
     --secondary-foreground: 240 5.9% 10%;
-    --muted: 240 94.8% 95.9%;
+    --muted: 240 4.8% 95.9%;
     --muted-foreground: 240 3.8% 46.1%;
     --accent: 240 4.8% 95.9%;
     --accent-foreground: 240 5.9% 10%;
@@ -39,18 +39,22 @@
     font-size: 14px;
     line-height: 1.5rem;
   }
-
-
-}
-
-.scene-tooltip {
-  display: none;
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+.scene-tooltip {
+  display: none;
+}
+
+.inset-shadow-stroke {
+  --tw-shadow: 0 8px 24px 0 rgba(0, 0, 0, .2), 0 2px 8px 0 rgba(0, 0, 0, .08), inset 0 0 0 1px rgba(0, 0, 0, .2), inset 0 0 0 2px hsla(0, 0%, 100%, .14);
+  --tw-shadow-colored: 0 8px 24px 0 var(--tw-shadow-color), 0 2px 8px 0 var(--tw-shadow-color), inset 0 0 0 1px var(--tw-shadow-color), inset 0 0 0 2px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
 .HoverCardContent {
