@@ -1,8 +1,10 @@
 'use client'
 
+import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
 import { EnvelopeClosedIcon, GitHubLogoIcon, InstagramLogoIcon, ShadowInnerIcon, TwitterLogoIcon, VideoIcon } from '@radix-ui/react-icons'
-import { motion } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
+import Link from 'next/link'
 
 const container = {
 	initial: {
@@ -12,7 +14,7 @@ const container = {
 		y: 0,
 		transition: {
 			staggerChildren: 0.1,
-			delayChildren: 0.75,
+			delayChildren: 0.1,
 			type: 'spring',
 		},
 	},
@@ -42,68 +44,82 @@ const slide = {
 
 export default function Home() {
 	return (
-		<div className="mx-auto flex h-screen w-screen max-w-[512px] items-center justify-center p-4">
-			<motion.div variants={container} initial="initial" animate="animate" exit="exit" className="flex flex-col gap-8 text-justify">
-				<motion.div variants={slide} className="flex flex-col gap-2">
-					<span>Raphael Salaja</span>
-					<span className="text-muted-foreground">
-						Genreless Creator
-						<span className="italic"> / (ˈʒɑːnrəlɪs krɪˈeɪtər) / noun</span>
-					</span>
-					<div className="flex flex-row gap-2 text-muted-foreground">
-						<span>1.</span>
-						<span>
-							an individual who defies traditional categorisation within creative endeavours, blending diverse influences and mediums to
-							produce innovative works.
-						</span>
-					</div>
-					<div className="flex flex-row gap-2 text-muted-foreground">
-						<span>2.</span>
-						<span>a multidisciplinary artist who transcends boundaries, creating without limitations.</span>
-					</div>
-				</motion.div>
+		<AnimatePresence>
+			<div className="relative h-screen w-screen">
+				<div className="mx-auto flex h-screen w-screen max-w-[512px] items-center justify-center p-4">
+					<motion.div variants={container} initial="initial" animate="animate" exit="exit" className="flex flex-col gap-8 text-justify">
+						<motion.div variants={slide} className="flex flex-col gap-2">
+							<span>Raphael Salaja</span>
+							<span className="text-muted-foreground">
+								Genreless Creator
+								<span className="italic"> / (ˈʒɑːnrəlɪs krɪˈeɪtər) / noun</span>
+							</span>
+							<div className="flex flex-row gap-2 text-muted-foreground">
+								<span>1.</span>
+								<span>
+									an individual who defies traditional categorisation within creative endeavours, blending diverse influences and
+									mediums to produce innovative works.
+								</span>
+							</div>
+							<div className="flex flex-row gap-2 text-muted-foreground">
+								<span>2.</span>
+								<span>a multidisciplinary artist who transcends boundaries, creating without limitations.</span>
+							</div>
+						</motion.div>
 
-				<motion.div variants={slide} className="flex flex-col gap-2">
-					<span>Today</span>
-					<span className="text-muted-foreground">
-						Working on Whim, a new haven for creators. Creating daily explorations on my {''}
-						<ParagraphLink icon={<TwitterLogoIcon />} text="Twitter" link="https://twitter.com/raphaelsalaja" />.
-					</span>
-				</motion.div>
+						<motion.div variants={slide} className="flex flex-col gap-2">
+							<span>Today</span>
+							<span className="text-muted-foreground">
+								Working on Whim, a new haven for creators. Creating daily explorations on my {''}
+								<ParagraphLink icon={<TwitterLogoIcon />} text="Twitter" link="https://twitter.com/raphaelsalaja" />.
+							</span>
+						</motion.div>
 
-				<motion.div variants={slide} className="flex flex-col gap-2">
-					<span>Contact</span>
-					<span className="text-muted-foreground">
-						Reach me at{' '}
-						<ParagraphLink icon={<EnvelopeClosedIcon />} text="raphaelsalaja@gmail.com" link="mailto:raphaelsalaja@gmail.com" /> or shoot
-						me a messsage on {''}
-						<ParagraphLink icon={<TwitterLogoIcon />} text="Twitter" link="https://twitter.com/raphaelsalaja" />. If you want to check out
-						my personal side you can see my posts on {''}
-						<ParagraphLink icon={<InstagramLogoIcon />} text="Instagram" link="https://instagram.com/raphaelsalaja" /> or watch my
-						(future) videos on {''}
-						<ParagraphLink icon={<VideoIcon />} text="Youtube" link="https://youtube.com/@raphaelsalaja" />
-						.
-						<br />
-						<br />
-						All (or most) of my work is open source and accessible to everyone on {''}
-						<ParagraphLink icon={<GitHubLogoIcon />} text="Github" link="https://github.com/rafunderscore" />. Check out my {''}
-						<ParagraphLink icon={<Patreon />} text="Patreon" link="https://www.patreon.com/RaphaelSalaja" /> to support me and my work. If
-						you are interested in owning a piece of my work, you can check out my pursuits into generative art on {''}
-						<ParagraphLink icon={<ShadowInnerIcon />} text="Zora" link="https://zora.co/@raphaelsalaja" />.
-					</span>
-				</motion.div>
+						<motion.div variants={slide} className="flex flex-col gap-2">
+							<span>Contact</span>
+							<span className="text-muted-foreground">
+								Reach me at{' '}
+								<ParagraphLink icon={<EnvelopeClosedIcon />} text="raphaelsalaja@gmail.com" link="mailto:raphaelsalaja@gmail.com" />{' '}
+								or shoot me a messsage on {''}
+								<ParagraphLink icon={<TwitterLogoIcon />} text="Twitter" link="https://twitter.com/raphaelsalaja" />. If you want to
+								check out my personal side you can see my posts on {''}
+								<ParagraphLink icon={<InstagramLogoIcon />} text="Instagram" link="https://instagram.com/raphaelsalaja" /> or watch my
+								(future) videos on {''}
+								<ParagraphLink icon={<VideoIcon />} text="Youtube" link="https://youtube.com/@raphaelsalaja" />
+								.
+								<br />
+								<br />
+								All (or most) of my work is open source and accessible to everyone on {''}
+								<ParagraphLink icon={<GitHubLogoIcon />} text="Github" link="https://github.com/rafunderscore" />. Check out my {''}
+								<ParagraphLink icon={<Patreon />} text="Patreon" link="https://www.patreon.com/RaphaelSalaja" /> to support me and my
+								work. If you are interested in owning a piece of my work, you can check out my pursuits into generative art on {''}
+								<ParagraphLink icon={<ShadowInnerIcon />} text="Zora" link="https://zora.co/@raphaelsalaja" />.
+							</span>
+						</motion.div>
 
-				<motion.div variants={slide} className="flex flex-col gap-2">
-					<Separator />
-					<span className="text-xs font-light text-muted-foreground">
-						This is a living document and will be updated as I continue to create and explore new ideas. To see previous works, please
-						visit my {''}
-						<ParagraphLink text="Bento" link="https://bento.me/raphaelsalaja" />
-						{''} page.
-					</span>
-				</motion.div>
-			</motion.div>
-		</div>
+						<motion.div variants={slide} className="flex flex-col gap-2">
+							<Separator />
+							<span className="text-xs font-light text-muted-foreground">
+								This is a living document and will be updated as I continue to create and explore new ideas. To see previous works,
+								please visit my {''}
+								<ParagraphLink text="Bento" link="https://bento.me/raphaelsalaja" />
+								{''} page.
+							</span>
+						</motion.div>
+					</motion.div>
+				</div>
+				<div className="absolute bottom-0 right-0 p-4 text-xs">
+					<Link href="/arena">
+						<Button
+							variant="outline"
+							className="flex flex-col gap-2 rounded-none p-4 text-justify text-xs font-normal text-muted-foreground"
+						>
+							Spatial / Are.na
+						</Button>
+					</Link>
+				</div>
+			</div>
+		</AnimatePresence>
 	)
 }
 

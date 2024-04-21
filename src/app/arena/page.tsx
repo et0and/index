@@ -1,6 +1,6 @@
 'use client'
 
-import { Download, Dropdown, Home, Loading, Search } from '@/components/graph/graph-instruments'
+import { Dropdown, Home, Loading, Search } from '@/components/graph/graph-instruments'
 import { AnimatePresence, motion } from 'framer-motion'
 import dynamic from 'next/dynamic'
 import { useState } from 'react'
@@ -44,7 +44,6 @@ export default function ArenaGraph() {
 								<Search onDataReceived={handleDataReceived} />
 							</div>
 							<div className="flex gap-2">
-								<Download />
 								<Dropdown />
 							</div>
 						</div>
