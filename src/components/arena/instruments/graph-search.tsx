@@ -1,7 +1,7 @@
 'use client'
 
 import { Input } from '@/components/ui/input'
-import { getDataFromURL } from '@/lib/utils/arena/arena'
+import { getDataFromURL } from '@/lib/utils/arena'
 import { cn } from '@/lib/utils/cn'
 
 interface GraphSearchProps {

@@ -65,7 +65,6 @@ export default function ArenaGraph() {
 												</div>
 												<div className="flex flex-col gap-2 ">
 													<div>relating to or occupying space</div>
-													<div>"the spatial distribution of population"</div>
 													<div>To begin, paste a link to an Are.na block or channel, or search for anything above.</div>
 													<div>
 														Note, this is a work in progress and may not work as expected. Please report any issues you
