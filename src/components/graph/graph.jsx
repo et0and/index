@@ -1,10 +1,11 @@
-import { useCallback, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { ForceGraph3D } from 'react-force-graph'
 import { Mesh, Sprite, SpriteMaterial, TextureLoader } from 'three'
 import SpriteText from 'three-spritetext'
 
 export const ArenaForceGraph = ({ data }) => {
 	const reference = useRef()
+
 	const [selectedNode, setSelectedNode] = useState()
 
 	useEffect(() => {

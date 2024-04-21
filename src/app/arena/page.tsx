@@ -1,6 +1,6 @@
 'use client'
 
-import { Download, Dropdown, Home, Search } from '@/components/graph/graph-instruments'
+import { Download, Dropdown, Home, Loading, Search } from '@/components/graph/graph-instruments'
 import { AnimatePresence, motion } from 'framer-motion'
 import dynamic from 'next/dynamic'
 import { useState } from 'react'
@@ -17,8 +17,8 @@ export default function ArenaGraph() {
 	}
 
 	const ArenaForceGraph = dynamic(() => import('@/components/graph/graph').then((module) => module.ArenaForceGraph), {
-		loading: () => <p>Loading...</p>,
-		ssr: false, // Render this component only on the client-side
+		loading: () => <Loading />,
+		ssr: false,
 	})
 
 	return (

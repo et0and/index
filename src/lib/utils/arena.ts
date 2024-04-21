@@ -29,8 +29,11 @@ export async function getDataFromURL(url: string) {
 		links: [],
 	}
 
+	console.log(url)
+
 	if (url.includes('/block/')) {
-		let connections = arena.block(url).channels()
+		let slug = url.split('/block/')[1]
+		let connections = arena.block(slug).channels()
 		let slugs = (await connections).map((connections) => connections.slug)
 		let channels = await Promise.all(slugs.map((slug) => arena.channel(slug).get()))
 
@@ -58,7 +61,8 @@ export async function getDataFromURL(url: string) {
 			}
 		}
 	} else {
-		let channel = await arena.channel(url).get()
+		let slug = url.split('/').slice(-1)[0]
+		let channel = await arena.channel(slug).get()
 		data.nodes.push({
 			id: channel.id.toString(),
 			name: channel.title,
@@ -90,9 +94,12 @@ export async function getDataFromSearch(query: string) {
 		links: [],
 	}
 
-	let channels = await arena.search(query).channels({ per: 100 })
+	let results = await arena.search(query).all()
 
-	for (let channel of channels) {
+	let channels = results.channels
+	let blocks = results.blocks
+
+	for (let channel of channels ?? []) {
 		data.nodes.push({
 			id: channel.id.toString(),
 			name: channel.title,
@@ -113,6 +120,17 @@ export async function getDataFromSearch(query: string) {
 				target: block.id.toString(),
 			})
 		}
+	}
+
+	for (let block of blocks ?? []) {
+		data.nodes.push({
+			id: block.id.toString(),
+			name: block.title ?? '',
+			class: block.class,
+			content: block.content ?? '',
+			image: block.image?.thumb.url,
+			url: 'https://www.are.na/block/' + block.id.toString(),
+		})
 	}
 
 	return data

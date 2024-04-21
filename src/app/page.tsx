@@ -46,18 +46,18 @@ export default function Home() {
 			<motion.div variants={container} initial="initial" animate="animate" exit="exit" className="flex flex-col gap-8 text-justify">
 				<motion.div variants={slide} className="flex flex-col gap-2">
 					<span>Raphael Salaja</span>
-					<span className="text-muted">
+					<span className="text-muted-foreground">
 						Genreless Creator
 						<span className="italic"> / (ˈʒɑːnrəlɪs krɪˈeɪtər) / noun</span>
 					</span>
-					<div className="flex flex-row gap-2 text-muted">
+					<div className="flex flex-row gap-2 text-muted-foreground">
 						<span>1.</span>
 						<span>
 							an individual who defies traditional categorisation within creative endeavours, blending diverse influences and mediums to
 							produce innovative works.
 						</span>
 					</div>
-					<div className="flex flex-row gap-2 text-muted">
+					<div className="flex flex-row gap-2 text-muted-foreground">
 						<span>2.</span>
 						<span>a multidisciplinary artist who transcends boundaries, creating without limitations.</span>
 					</div>
@@ -65,7 +65,7 @@ export default function Home() {
 
 				<motion.div variants={slide} className="flex flex-col gap-2">
 					<span>Today</span>
-					<span className="text-muted">
+					<span className="text-muted-foreground">
 						Working on Whim, a new haven for creators. Creating daily explorations on my {''}
 						<ParagraphLink icon={<TwitterLogoIcon />} text="Twitter" link="https://twitter.com/raphaelsalaja" />.
 					</span>
@@ -73,7 +73,7 @@ export default function Home() {
 
 				<motion.div variants={slide} className="flex flex-col gap-2">
 					<span>Contact</span>
-					<span className="text-muted">
+					<span className="text-muted-foreground">
 						Reach me at{' '}
 						<ParagraphLink icon={<EnvelopeClosedIcon />} text="raphaelsalaja@gmail.com" link="mailto:raphaelsalaja@gmail.com" /> or shoot
 						me a messsage on {''}
@@ -95,7 +95,7 @@ export default function Home() {
 
 				<motion.div variants={slide} className="flex flex-col gap-2">
 					<Separator />
-					<span className="text-xs font-light text-muted">
+					<span className="text-xs font-light text-muted-foreground">
 						This is a living document and will be updated as I continue to create and explore new ideas. To see previous works, please
 						visit my {''}
 						<ParagraphLink text="Bento" link="https://bento.me/raphaelsalaja" />

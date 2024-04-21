@@ -2,11 +2,12 @@
 
 import { ArenaIcon } from '@/components/icons/arena'
 import { Button } from '@/components/ui/button'
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
 import { Input } from '@/components/ui/input'
-import { getDataFromURL } from '@/lib/utils/arena'
+import { getDataFromSearch, getDataFromURL } from '@/lib/utils/arena'
 import { cn } from '@/lib/utils/cn'
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@radix-ui/react-dropdown-menu'
 import { DownloadIcon, HamburgerMenuIcon } from '@radix-ui/react-icons'
+import { motion } from 'framer-motion'
 
 export function Home() {
 	return (
@@ -33,11 +34,43 @@ export function Dropdown() {
 				</Button>
 			</DropdownMenuTrigger>
 			<DropdownMenuContent align="end" sideOffset={8} className="rounded-none">
-				<DropdownMenuItem>GitHub</DropdownMenuItem>
-				<DropdownMenuItem>Twitter</DropdownMenuItem>
-				<DropdownMenuItem>Support Me</DropdownMenuItem>
+				<DropdownMenuItem
+					onClick={() => {
+						window.open('https://www.raphaelsalaja.com', '_blank')
+					}}
+				>
+					Home
+				</DropdownMenuItem>
+				<DropdownMenuItem
+					onClick={() => {
+						window.open('https://www.github.com/rafunderscore', '_blank')
+					}}
+				>
+					GitHub
+				</DropdownMenuItem>
+				<DropdownMenuItem
+					onClick={() => {
+						window.open('https://www.twitter.com/raphaelsalaja', '_blank')
+					}}
+				>
+					Twitter
+				</DropdownMenuItem>
 			</DropdownMenuContent>
 		</DropdownMenu>
+	)
+}
+
+export function Loading() {
+	return (
+		<motion.div
+			initial={{ opacity: 0 }}
+			animate={{ opacity: 1 }}
+			exit={{ opacity: 0 }}
+			transition={{ duration: 1 }}
+			className="flex h-full w-full items-center justify-center"
+		>
+			<ArenaIcon className="h-8 w-8 animate-spin" />
+		</motion.div>
 	)
 }
 
@@ -55,7 +88,7 @@ export function Search({ onDataReceived }: SearchProps) {
 			const data = await getDataFromURL(input)
 			onDataReceived(data)
 		} else {
-			const data = await getDataFromURL(input)
+			const data = await getDataFromSearch(input)
 			onDataReceived(data)
 		}
 	}
