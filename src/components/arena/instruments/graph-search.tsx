@@ -1,8 +1,7 @@
 'use client'
 
 import { Input } from '@/components/ui/input'
-import { getDataFromBlockSlug } from '@/lib/utils/arena/block'
-import { searchAll } from '@/lib/utils/arena/search'
+import { getDataFromURL } from '@/lib/utils/arena/arena'
 import { cn } from '@/lib/utils/cn'
 
 interface GraphSearchProps {
@@ -16,14 +15,11 @@ export function GraphSearch({ onDataReceived }: GraphSearchProps) {
 		}
 
 		if (new RegExp('https://www.are.na/').test(input)) {
-			const url = new URL(input)
-			const slug = url.pathname.split('/').pop() || ''
-			const data = await getDataFromBlockSlug(slug)
-			console.log(data)
+			const data = await getDataFromURL(input)
 			onDataReceived(data)
 		} else {
-			const searchData = await searchAll(input)
-			onDataReceived(searchData)
+			const data = await getDataFromURL(input)
+			onDataReceived(data)
 		}
 	}
 
