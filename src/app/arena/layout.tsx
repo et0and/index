@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import './globals.css'
 
 export const metadata: Metadata = {
 	title: 'Are.na / Spatial',
@@ -24,5 +23,5 @@ export default function ArenaLayout({
 }: Readonly<{
 	children: React.ReactNode
 }>) {
-	return { children }
+	return children
 }
