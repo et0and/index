@@ -1,7 +1,6 @@
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Cross1Icon } from '@radix-ui/react-icons'
-import { useMeasure } from '@uidotdev/usehooks'
 import * as d3 from 'd3'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
@@ -14,12 +13,12 @@ import SpriteText from 'three-spritetext'
 import { Textarea } from '../ui/textarea'
 
 export const ArenaForceGraph = ({ data }) => {
+	RelativeTimeFormat.addLocale(en)
+
+	const distance = 1000
 	const reference = useRef()
 	const [isSelected, setIsSelected] = useState(false)
 	const [selectedNode, setSelectedNode] = useState()
-	const [ref, { height }] = useMeasure()
-
-	RelativeTimeFormat.addLocale(en)
 
 	useEffect(() => {
 		if (reference.current && reference.current.d3Force) {
@@ -28,11 +27,11 @@ export const ArenaForceGraph = ({ data }) => {
 			reference.current.d3Force('collide', collide)
 			reference.current.d3Force('link').distance(100)
 		}
-	}, [reference])
+	}, [reference, distance])
 
 	const handleClick = useCallback(
 		(node) => {
-			const distance = 100
+			const distance = 200
 			const distRatio = 1 + distance / Math.hypot(node.x, node.y, node.z)
 
 			if (reference.current) {
@@ -43,7 +42,7 @@ export const ArenaForceGraph = ({ data }) => {
 						z: node.z * distRatio,
 					},
 					node,
-					3000
+					2000
 				)
 			}
 			setSelectedNode(node)
@@ -205,7 +204,6 @@ export const ArenaForceGraph = ({ data }) => {
 											className="overflow-hidden"
 										>
 											<Textarea
-												ref={ref}
 												className="h-full w-full rounded-none border"
 												placeholder=""
 												value={selectedNode.content}
