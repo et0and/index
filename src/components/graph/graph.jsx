@@ -46,7 +46,6 @@ export const ArenaForceGraph = ({ data }) => {
 					3000
 				)
 			}
-
 			setSelectedNode(node)
 			setIsSelected(true)
 			console.log(node)
@@ -88,9 +87,9 @@ export const ArenaForceGraph = ({ data }) => {
 		spriteText.textHeight = 1
 		spriteText.padding = 5
 		spriteText.borderWidth = 0.5
+		spriteText.borderColor = 'rgba(0,0,0,0.2)'
 		spriteText.color = 'black'
 		spriteText.backgroundColor = 'white'
-
 		return spriteText
 	}
 
@@ -170,74 +169,88 @@ export const ArenaForceGraph = ({ data }) => {
 									</Button>
 								</CardTitle>
 							</CardHeader>
-							<CardContent className="flex-col space-y-8 p-6 text-sm">
-								<div className="grid gap-3">
-									<ul className="grid gap-3">
-										<AnimatePresence initial={false}>
-											{selectedNode.information.class === 'Text' && (
-												<motion.li
-													initial={{
-														opacity: 0,
-														height: 0,
-													}}
-													animate={{
-														height: 300,
-														opacity: 1,
-													}}
-													exit={{
-														opacity: 0,
-														height: 0,
-													}}
-													transition={{
-														type: 'spring',
-														duration: 0.75,
-													}}
-													className="flex flex-col space-y-8"
-												>
-													<Textarea
-														ref={ref}
-														className="h-[300px] w-full rounded-none border"
-														placeholder=""
-														value={selectedNode.content}
-														readOnly
-													/>
-												</motion.li>
-											)}
-										</AnimatePresence>
-										<li className="flex items-center justify-between">
-											<span className="text-muted-foreground">Added</span>
-											<span>
-												{selectedNode.information.created_at ? (
-													<RelativeTime value={new Date(selectedNode.information.created_at)} />
-												) : (
-													<RelativeTime value={new Date(selectedNode.information.owner.created_at)} />
-												)}
-											</span>
-										</li>
-										<li className="flex items-center justify-between">
-											<span className="text-muted-foreground">Modified</span>
-											<span>
-												<RelativeTime value={new Date(selectedNode.information.updated_at)} />
-											</span>
-										</li>
-										<li className="flex items-center justify-between">
-											<span className="text-muted-foreground">By</span>
-											<span>
-												<span>{selectedNode.information.user.full_name}</span>
-											</span>
-										</li>
-									</ul>
-								</div>
+							<CardContent className="p-0 text-sm">
+								<AnimatePresence>
+									{selectedNode.information.class === 'Text' && (
+										<motion.div
+											initial={{
+												opacity: 0,
+												height: 0,
+												scale: 0.8,
+												marginLeft: 0,
+												marginRight: 0,
+												marginTop: 0,
+												marginBottom: 0,
+												filter: 'blur(4px)',
+											}}
+											animate={{
+												scale: 1,
+												filter: 'blur(0)',
+												height: 300,
+												opacity: 1,
+												marginLeft: 24,
+												marginRight: 24,
+												marginTop: 24,
+												marginBottom: 0,
+											}}
+											exit={{
+												marginLeft: 0,
+												marginRight: 0,
+												marginTop: 0,
+												marginBottom: 0,
+												opacity: 0,
+												filter: 'blur(4px)',
+												height: 0,
+											}}
+											className="overflow-hidden"
+										>
+											<Textarea
+												ref={ref}
+												className="h-full w-full rounded-none border"
+												placeholder=""
+												value={selectedNode.content}
+												readOnly
+											/>
+										</motion.div>
+									)}
+								</AnimatePresence>
 
-								<Button
-									variant="outline"
-									className="w-full rounded-none"
-									onClick={() => {
-										window.open(selectedNode.url, '_blank')
-									}}
-								>
-									View
-								</Button>
+								<ul className="grid gap-3 p-6">
+									<li className="flex items-center justify-between">
+										<span className="text-muted-foreground">Added</span>
+										<span>
+											{selectedNode.information.created_at ? (
+												<RelativeTime value={new Date(selectedNode.information.created_at)} />
+											) : (
+												<RelativeTime value={new Date(selectedNode.information.owner.created_at)} />
+											)}
+										</span>
+									</li>
+									<li className="flex items-center justify-between">
+										<span className="text-muted-foreground">Modified</span>
+										<span>
+											<RelativeTime value={new Date(selectedNode.information.updated_at)} />
+										</span>
+									</li>
+									<li className="flex items-center justify-between">
+										<span className="text-muted-foreground">By</span>
+										<span>
+											<span>{selectedNode.information.user.full_name}</span>
+										</span>
+									</li>
+								</ul>
+
+								<div className="p-6 pt-0">
+									<Button
+										variant="outline"
+										className="w-full rounded-none"
+										onClick={() => {
+											window.open(selectedNode.url, '_blank')
+										}}
+									>
+										View
+									</Button>
+								</div>
 							</CardContent>
 						</Card>
 					</motion.div>
