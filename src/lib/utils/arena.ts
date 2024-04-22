@@ -7,6 +7,7 @@ export type Node = {
 	image?: string
 	content?: string
 	url?: string
+	information?: any
 }
 
 export type Link = {
@@ -29,8 +30,6 @@ export async function getDataFromURL(url: string) {
 		links: [],
 	}
 
-	console.log(url)
-
 	if (url.includes('/block/')) {
 		let slug = url.split('/block/')[1]
 		let connections = arena.block(slug).channels()
@@ -38,10 +37,11 @@ export async function getDataFromURL(url: string) {
 		let channels = await Promise.all(slugs.map((slug) => arena.channel(slug).get()))
 
 		for (let channel of channels) {
-			console.log(channel)
 			data.nodes.push({
 				id: channel.id.toString(),
 				name: channel.title,
+				information: channel,
+				url: 'https://www.are.na/' + (channel.user?.username ?? '').replace(/\s/g, '-') + '/' + channel.slug,
 			})
 
 			for (let block of channel.contents || []) {
@@ -52,6 +52,7 @@ export async function getDataFromURL(url: string) {
 					content: block.content ?? '',
 					image: block.image?.thumb.url,
 					url: 'https://www.are.na/block/' + block.id.toString(),
+					information: block,
 				})
 
 				data.links.push({
@@ -66,8 +67,8 @@ export async function getDataFromURL(url: string) {
 		data.nodes.push({
 			id: channel.id.toString(),
 			name: channel.title,
+			information: channel,
 		})
-
 		for (let block of channel.contents || []) {
 			data.nodes.push({
 				id: block.id.toString(),
@@ -76,6 +77,7 @@ export async function getDataFromURL(url: string) {
 				content: block.content ?? '',
 				image: block.image?.thumb.url,
 				url: 'https://www.are.na/block/' + block.id.toString(),
+				information: block,
 			})
 
 			data.links.push({
@@ -103,6 +105,8 @@ export async function getDataFromSearch(query: string) {
 		data.nodes.push({
 			id: channel.id.toString(),
 			name: channel.title,
+			information: channel,
+			url: 'https://www.are.na/' + (channel.user?.username ?? '').replace(/\s/g, '-') + '/' + channel.slug,
 		})
 
 		for (let block of channel.contents || []) {
@@ -113,6 +117,7 @@ export async function getDataFromSearch(query: string) {
 				content: block.content ?? '',
 				image: block.image?.thumb.url,
 				url: 'https://www.are.na/block/' + block.id.toString(),
+				information: block,
 			})
 
 			data.links.push({
@@ -130,6 +135,7 @@ export async function getDataFromSearch(query: string) {
 			content: block.content ?? '',
 			image: block.image?.thumb.url,
 			url: 'https://www.are.na/block/' + block.id.toString(),
+			information: block,
 		})
 	}
 

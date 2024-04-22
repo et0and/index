@@ -75,19 +75,22 @@ export function Loading() {
 }
 
 interface SearchProps {
+	state: string
 	onDataReceived: (data: any) => void
 }
 
-export function Search({ onDataReceived }: SearchProps) {
+export function Search({ state, onDataReceived }: SearchProps) {
 	async function parseSearch(input: string) {
 		if (!input) {
 			return
 		}
 
 		if (new RegExp('https://www.are.na/').test(input)) {
+			state = 'loading'
 			const data = await getDataFromURL(input)
 			onDataReceived(data)
 		} else {
+			state = 'loading'
 			const data = await getDataFromSearch(input)
 			onDataReceived(data)
 		}

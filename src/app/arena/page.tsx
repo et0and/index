@@ -18,7 +18,7 @@ export default function ArenaGraph() {
 
 	const ArenaForceGraph = dynamic(() => import('@/components/graph/graph').then((module) => module.ArenaForceGraph), {
 		loading: () => <Loading />,
-		ssr: false,
+		ssr: true,
 	})
 
 	return (
@@ -41,7 +41,7 @@ export default function ArenaGraph() {
 						<div className="flex justify-between">
 							<div className="flex gap-2">
 								<Home />
-								<Search onDataReceived={handleDataReceived} />
+								<Search state={state} onDataReceived={handleDataReceived} />
 							</div>
 							<div className="flex gap-2">
 								<Dropdown />
@@ -81,6 +81,8 @@ export default function ArenaGraph() {
 											</div>
 										</div>
 									)
+								case 'loading':
+									return <Loading />
 								case 'connections':
 									return (
 										<div className="h-full w-full">

@@ -131,12 +131,18 @@ dependencies:
   react-hook-form:
     specifier: ^7.51.3
     version: 7.51.3(react@18.2.0)
+  react-relative-time:
+    specifier: ^0.0.9
+    version: 0.0.9(react@18.2.0)
   react-sizeme:
     specifier: ^3.0.2
     version: 3.0.2
   react-spring:
     specifier: ^9.7.3
     version: 9.7.3(@react-three/fiber@8.16.2)(konva@9.3.6)(react-dom@18.2.0)(react-konva@18.2.10)(react-native@0.73.7)(react-zdog@1.2.2)(react@18.2.0)(three@0.163.0)(zdog@1.1.3)
+  relative-time-format:
+    specifier: ^1.1.6
+    version: 1.1.6
   tailwind-merge:
     specifier: ^2.3.0
     version: 2.3.0
@@ -9456,6 +9462,14 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: false
 
+  /react-relative-time@0.0.9(react@18.2.0):
+    resolution: {integrity: sha512-Vf59erCwSaJaYp/IhoEtq7dtt1y4YNDqNegmOY8sK2P6oHHe3sLOXjz9VTCr0yvL2Y7W6uwufrxU4jOX8fS/dA==}
+    peerDependencies:
+      react: '>=0.13.0'
+    dependencies:
+      react: 18.2.0
+    dev: false
+
   /react-remove-scroll-bar@2.3.6(@types/react@18.2.79)(react@18.2.0):
     resolution: {integrity: sha512-DtSYaao4mBmX+HDo5YWYdBWQwYIQQshUV/dVxFxK+KM26Wjwp1gZ6rv6OC3oujI6Bfu6Xyg3TwK533AQutsn/g==}
     engines: {node: '>=10'}
@@ -9687,6 +9701,10 @@ packages:
     hasBin: true
     dependencies:
       jsesc: 0.5.0
+    dev: false
+
+  /relative-time-format@1.1.6:
+    resolution: {integrity: sha512-aCv3juQw4hT1/P/OrVltKWLlp15eW1GRcwP1XdxHrPdZE9MtgqFpegjnTjLhi2m2WI9MT/hQQtE+tjEWG1hgkQ==}
     dev: false
 
   /remark-mdx@3.0.1:
