@@ -4,7 +4,7 @@ export const metadata: Metadata = {
 	title: 'Are.na / Spatial',
 	description: 'Explore spatial connections using data from Are.na',
 	openGraph: {
-		title: 'Arena Graph',
+		title: 'Are.na / Spatial',
 		description: 'Explore spatial connections using data from Are.na',
 		url: 'https://raphaelsalaja.com/arena',
 		siteName: 'Are.na / Spatial',
