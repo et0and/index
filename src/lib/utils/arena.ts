@@ -41,7 +41,7 @@ export async function getDataFromURL(url: string) {
 				id: channel.id.toString(),
 				name: channel.title,
 				information: channel,
-				url: 'https://www.are.na/' + (channel.user?.username ?? '').replace(/\s/g, '-') + '/' + channel.slug,
+				url: 'https://www.are.na/' + channel.user.slug + '/' + channel.slug,
 			})
 
 			for (let block of channel.contents || []) {
@@ -68,6 +68,7 @@ export async function getDataFromURL(url: string) {
 			id: channel.id.toString(),
 			name: channel.title,
 			information: channel,
+			url: 'https://www.are.na/' + channel.user.slug + '/' + channel.slug,
 		})
 		for (let block of channel.contents || []) {
 			data.nodes.push({
@@ -106,7 +107,7 @@ export async function getDataFromSearch(query: string) {
 			id: channel.id.toString(),
 			name: channel.title,
 			information: channel,
-			url: 'https://www.are.na/' + (channel.user?.username ?? '').replace(/\s/g, '-') + '/' + channel.slug,
+			url: 'https://www.are.na/' + channel.user.slug + '/' + channel.slug,
 		})
 
 		for (let block of channel.contents || []) {

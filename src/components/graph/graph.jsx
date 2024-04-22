@@ -1,5 +1,7 @@
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Cross1Icon } from '@radix-ui/react-icons'
+import { useMeasure } from '@uidotdev/usehooks'
 import * as d3 from 'd3'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
@@ -9,11 +11,13 @@ import RelativeTimeFormat from 'relative-time-format'
 import en from 'relative-time-format/locale/en'
 import { Mesh, Sprite, SpriteMaterial, TextureLoader } from 'three'
 import SpriteText from 'three-spritetext'
+import { Textarea } from '../ui/textarea'
 
 export const ArenaForceGraph = ({ data }) => {
 	const reference = useRef()
 	const [isSelected, setIsSelected] = useState(false)
 	const [selectedNode, setSelectedNode] = useState()
+	const [ref, { height }] = useMeasure()
 
 	RelativeTimeFormat.addLocale(en)
 
@@ -43,9 +47,9 @@ export const ArenaForceGraph = ({ data }) => {
 				)
 			}
 
-			console.log(node)
 			setSelectedNode(node)
 			setIsSelected(true)
+			console.log(node)
 		},
 		[reference]
 	)
@@ -53,8 +57,8 @@ export const ArenaForceGraph = ({ data }) => {
 	const channel = (node) => {
 		const spriteText = new SpriteText()
 		spriteText.text = node.name ?? ''
-		spriteText.textHeight = 0.5
-		spriteText.padding = 0.5
+		spriteText.textHeight = 1
+		spriteText.padding = 5
 		spriteText.borderWidth = 0.5
 		spriteText.borderColor = 'rgba(0,0,0,0.2)'
 		spriteText.color = 'black'
@@ -67,7 +71,7 @@ export const ArenaForceGraph = ({ data }) => {
 		const sprite = new Sprite()
 		const texture = new TextureLoader().load(node.image ?? '', (tex) => {
 			tex.needsUpdate = true
-			sprite.scale.set(tex.image.width / 75, tex.image.height / 75, 1)
+			sprite.scale.set(tex.image.width / 20, tex.image.height / 20, 1)
 		})
 		sprite.material = new SpriteMaterial({
 			map: texture,
@@ -79,10 +83,14 @@ export const ArenaForceGraph = ({ data }) => {
 
 	const text = (node) => {
 		const spriteText = new SpriteText()
-		spriteText.text = node.content ?? ''
-		spriteText.textHeight = 0.5
+
+		spriteText.text = node.content.substring(0, 60) + '...'
+		spriteText.textHeight = 1
+		spriteText.padding = 5
+		spriteText.borderWidth = 0.5
 		spriteText.color = 'black'
 		spriteText.backgroundColor = 'white'
+
 		return spriteText
 	}
 
@@ -117,46 +125,90 @@ export const ArenaForceGraph = ({ data }) => {
 
 	return (
 		<div className="relative h-full w-full overflow-hidden">
-			<AnimatePresence>
+			<AnimatePresence initial={false}>
 				{isSelected && (
-					<motion.div
-						initial={{
-							filter: 'blur(4px)',
-							y: 100,
-							opacity: 0,
-						}}
-						animate={{
-							filter: 'blur(0)',
-							y: 0,
-							opacity: 1,
-						}}
-						exit={{
-							filter: 'blur(4px)',
-							y: 100,
-							opacity: 0,
-						}}
-						transition={{
-							type: 'spring',
-							duration: 0.75,
-						}}
-						className="absolute bottom-0 left-0 z-10 w-96 p-4"
-					>
-						<Card className="overflow-hidden rounded-none">
+					<motion.div className="absolute bottom-0 left-0 z-10 w-96 p-4">
+						<Card
+							initial={{
+								filter: 'blur(4px)',
+								y: 100,
+								height: 'auto',
+								opacity: 0,
+							}}
+							animate={{
+								filter: 'blur(0)',
+								y: 0,
+								height: 'auto',
+								opacity: 1,
+							}}
+							exit={{
+								filter: 'blur(4px)',
+								y: 100,
+								height: 'auto',
+								opacity: 0,
+							}}
+							transition={{
+								type: 'spring',
+								duration: 0.75,
+							}}
+							className="overflow-hidden rounded-none"
+						>
 							<CardHeader className="flex flex-row items-start bg-muted/50">
-								<div className="grid gap-0.5">
-									<CardTitle className="group flex items-center gap-2 text-lg">
+								<CardTitle className="group flex w-full items-center justify-between gap-2 text-lg">
+									<span className="max-w-[200px] overflow-hidden overflow-ellipsis whitespace-nowrap">
 										{selectedNode.information.title ? selectedNode.information.title : selectedNode.information.generated_title}
-									</CardTitle>
-								</div>
+									</span>
+									<Button
+										variant="outline"
+										size="icon"
+										className="rounded-none"
+										onClick={() => {
+											setIsSelected(false)
+										}}
+									>
+										<Cross1Icon />
+									</Button>
+								</CardTitle>
 							</CardHeader>
 							<CardContent className="flex-col space-y-8 p-6 text-sm">
 								<div className="grid gap-3">
 									<ul className="grid gap-3">
+										<AnimatePresence initial={false}>
+											{selectedNode.information.class === 'Text' && (
+												<motion.li
+													initial={{
+														opacity: 0,
+														height: 0,
+													}}
+													animate={{
+														height: 300,
+														opacity: 1,
+													}}
+													exit={{
+														opacity: 0,
+														height: 0,
+													}}
+													transition={{
+														type: 'spring',
+														duration: 0.75,
+													}}
+													className="flex flex-col space-y-8"
+												>
+													<Textarea
+														ref={ref}
+														className="h-[300px] w-full rounded-none border"
+														placeholder=""
+														value={selectedNode.content}
+														readOnly
+													/>
+												</motion.li>
+											)}
+										</AnimatePresence>
 										<li className="flex items-center justify-between">
 											<span className="text-muted-foreground">Added</span>
 											<span>
-												{selectedNode.information.connected_at ? (
-													<RelativeTime value={new Date(selectedNode.information.connected_at)} />
+												{selectedNode.information.created_at ? (
+													<RelativeTime value={new Date(selectedNode.information.created_at)} />
 												) : (
 													<RelativeTime value={new Date(selectedNode.information.owner.created_at)} />
 												)}
@@ -176,6 +228,7 @@ export const ArenaForceGraph = ({ data }) => {
 										</li>
 									</ul>
 								</div>
+
 								<Button
 									variant="outline"
 									className="w-full rounded-none"

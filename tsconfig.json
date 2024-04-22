@@ -30,7 +30,8 @@
 		"src/app/api/route.js",
 		"src/lib/utils/arena/api.ts",
 		"src/components/graph.jsx",
-		"tailwind.config.js"
+		"tailwind.config.js",
+		"src/components/graph/graph.jsx"
 	],
 	"exclude": ["node_modules"]
 }

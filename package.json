@@ -30,6 +30,7 @@
     "@radix-ui/react-tabs": "^1.0.4",
     "@react-three/drei": "^9.105.4",
     "@types/mdx": "^2.0.13",
+    "@uidotdev/usehooks": "^2.4.1",
     "@vercel/analytics": "^1.2.2",
     "@vercel/og": "^0.6.2",
     "@vercel/speed-insights": "^1.0.10",
