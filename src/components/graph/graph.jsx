@@ -47,7 +47,6 @@ export const ArenaForceGraph = ({ data }) => {
 			}
 			setSelectedNode(node)
 			setIsSelected(true)
-			console.log(node)
 		},
 		[reference]
 	)
