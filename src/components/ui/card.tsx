@@ -1,4 +1,4 @@
-import { cn } from '@/lib/utils/cn'
+import { cn } from '@/lib/cn'
 import { HTMLMotionProps, motion } from 'framer-motion'
 import * as React from 'react'
 

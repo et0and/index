@@ -13,7 +13,7 @@ const nextConfig = {
             'picsum.photos',
             'pbs.twimg.com'
         ],
-    },
+    }
 }
 
 module.exports = withMDX(nextConfig)
