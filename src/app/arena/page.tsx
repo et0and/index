@@ -16,10 +16,13 @@ export default function ArenaGraph() {
 		setState('connections')
 	}
 
-	const ArenaForceGraph = dynamic(() => import('@/components/graph/graph').then((module) => module.ArenaForceGraph), {
-		loading: () => <Loading />,
-		ssr: true,
-	})
+	const ArenaForceGraph = dynamic(
+		() => import('@/components/graph/graph').then((module) => module.ArenaForceGraph),
+		{
+			loading: () => <Loading />,
+			ssr: true,
+		}
+	)
 
 	return (
 		<AnimatePresence>
@@ -65,10 +68,15 @@ export default function ArenaGraph() {
 												</div>
 												<div className="flex flex-col gap-2 ">
 													<div>relating to or occupying space</div>
-													<div>To begin, paste a link to an Are.na block or channel, or search for anything above.</div>
 													<div>
-														Note, this is a work in progress and may not work as expected. Please report any issues you
-														find or any suggestions you would like to see added.
+														To begin, paste a link to an Are.na block or
+														channel, or search for anything above.
+													</div>
+													<div>
+														Note, this is a work in progress and may not
+														work as expected. Please report any issues
+														you find or any suggestions you would like
+														to see added.
 													</div>
 												</div>
 											</div>
