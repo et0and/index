@@ -17,7 +17,7 @@ export default function Home() {
 
 	return (
 		<div className='relative h-screen w-screen'>
-			<div className='mx-auto flex h-screen w-screen max-w-[512px] items-center justify-center p-4 text-justify'>
+			<div className='m-auto flex h-full w-full max-w-[512px] items-center justify-center p-4 text-justify'>
 				<motion.article
 					initial={{ opacity: 0 }}
 					animate={{ opacity: 1 }}
