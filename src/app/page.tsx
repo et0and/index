@@ -17,7 +17,7 @@ export default function Home() {
 
 	return (
 		<div className='relative h-screen w-screen'>
-			<div className='m-auto flex h-full w-full max-w-[512px] p-4 pt-12 text-justify'>
+			<div className='m-auto flex h-full w-full max-w-[512px] p-4 py-12 text-justify'>
 				<motion.article
 					initial={{ opacity: 0 }}
 					animate={{ opacity: 1 }}
