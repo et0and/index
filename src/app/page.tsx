@@ -17,12 +17,12 @@ export default function Home() {
 
 	return (
 		<div className='relative h-screen w-screen'>
-			<div className='m-auto flex h-full w-full max-w-[512px] items-center justify-center p-4 text-justify'>
+			<div className='m-auto flex h-full w-full max-w-[512px] p-4 pt-12 text-justify'>
 				<motion.article
 					initial={{ opacity: 0 }}
 					animate={{ opacity: 1 }}
 					exit={{ opacity: 0 }}
-					transition={{ duration: 1 }}
+					transition={{ duration: 0.2 }}
 					className='flex flex-col gap-8'
 				>
 					<section className='flex flex-col gap-2'>
