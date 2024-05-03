@@ -22,7 +22,6 @@ export default function ArenaGraph() {
 				(module) => module.LastFMForceGraph
 			),
 		{
-			// loading: () => <Loading />,
 			ssr: true,
 		}
 	)
