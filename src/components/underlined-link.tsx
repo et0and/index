@@ -1,6 +1,6 @@
 'use client'
 
-import { cn } from '@/lib/cn'
+import { cn } from '@/lib/utils'
 import { motion } from 'framer-motion'
 import React from 'react'
 
@@ -19,13 +19,17 @@ export function UnderlinedLink({ text, link, space }: UnderlinedLinkProps) {
 			<motion.div
 				onHoverStart={() => setHovered(true)}
 				onHoverEnd={() => setHovered(false)}
-				style={{ color: '#5EB1EF', position: 'relative', display: 'inline-block' }}
+				style={{
+					color: '#5EB1EF',
+					position: 'relative',
+					display: 'inline-block',
+				}}
 			>
 				<a
-					className="relative max-w-max"
+					className='relative max-w-max'
 					href={link}
 					target={link ? '_blank' : '_self'}
-					rel="noopener noreferrer"
+					rel='noopener noreferrer'
 					style={{ textDecoration: 'none', color: 'inherit' }}
 				>
 					{text}

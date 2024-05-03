@@ -32,9 +32,10 @@
 		"src/lib/utils/arena/api.ts",
 		"src/components/graph.jsx",
 		"tailwind.config.js",
-		"src/components/graph/graph.jsx",
+		"src/components/arena/graph.jsx",
 		".next/types/app/twitter/page.tsx",
-		"src/data/tweets.json"
+		"src/data/tweets.json",
+		"src/components/last-fm/graph.jsx"
 	],
 	"exclude": ["node_modules"]
 }

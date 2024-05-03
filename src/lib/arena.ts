@@ -1,24 +1,5 @@
-import Arena, { BlockType } from 'are.na'
-
-export type Node = {
-	id: string
-	name: string
-	class?: BlockType
-	image?: string
-	content?: string
-	url?: string
-	information?: any
-}
-
-export type Link = {
-	source: string
-	target: string
-}
-
-export type GraphData = {
-	nodes: Node[]
-	links: Link[]
-}
+import Arena from 'are.na'
+import { GraphData } from './graph'
 
 let arena = new Arena({
 	accessToken: 'xUL8AvT4OQE4Yesa8glQdJNoGtTqgD_lOx1blFqXcwE',
@@ -34,25 +15,20 @@ export async function getDataFromURL(url: string) {
 		let slug = url.split('/block/')[1]
 		let connections = arena.block(slug).channels()
 		let slugs = (await connections).map((connections) => connections.slug)
-		let channels = await Promise.all(slugs.map((slug) => arena.channel(slug).get()))
+		let channels = await Promise.all(
+			slugs.map((slug) => arena.channel(slug).get())
+		)
 
 		for (let channel of channels) {
 			data.nodes.push({
 				id: channel.id.toString(),
-				name: channel.title,
-				information: channel,
-				url: 'https://www.are.na/' + channel.user.slug + '/' + channel.slug,
+				arena: channel,
 			})
 
 			for (let block of channel.contents || []) {
 				data.nodes.push({
 					id: block.id.toString(),
-					name: block.title ?? '',
-					class: block.class,
-					content: block.content ?? '',
-					image: block.image?.thumb.url,
-					url: 'https://www.are.na/block/' + block.id.toString(),
-					information: block,
+					arena: block,
 				})
 
 				data.links.push({
@@ -66,19 +42,12 @@ export async function getDataFromURL(url: string) {
 		let channel = await arena.channel(slug).get()
 		data.nodes.push({
 			id: channel.id.toString(),
-			name: channel.title,
-			information: channel,
-			url: 'https://www.are.na/' + channel.user.slug + '/' + channel.slug,
+			arena: channel,
 		})
 		for (let block of channel.contents || []) {
 			data.nodes.push({
 				id: block.id.toString(),
-				name: block.title ?? '',
-				class: block.class,
-				content: block.content ?? '',
-				image: block.image?.thumb.url,
-				url: 'https://www.are.na/block/' + block.id.toString(),
-				information: block,
+				arena: block,
 			})
 
 			data.links.push({
@@ -105,20 +74,13 @@ export async function getDataFromSearch(query: string) {
 	for (let channel of channels ?? []) {
 		data.nodes.push({
 			id: channel.id.toString(),
-			name: channel.title,
-			information: channel,
-			url: 'https://www.are.na/' + channel.user.slug + '/' + channel.slug,
+			arena: channel,
 		})
 
 		for (let block of channel.contents || []) {
 			data.nodes.push({
 				id: block.id.toString(),
-				name: block.title ?? '',
-				class: block.class,
-				content: block.content ?? '',
-				image: block.image?.thumb.url,
-				url: 'https://www.are.na/block/' + block.id.toString(),
-				information: block,
+				arena: block,
 			})
 
 			data.links.push({
@@ -131,12 +93,7 @@ export async function getDataFromSearch(query: string) {
 	for (let block of blocks ?? []) {
 		data.nodes.push({
 			id: block.id.toString(),
-			name: block.title ?? '',
-			class: block.class,
-			content: block.content ?? '',
-			image: block.image?.thumb.url,
-			url: 'https://www.are.na/block/' + block.id.toString(),
-			information: block,
+			arena: block,
 		})
 	}
 
