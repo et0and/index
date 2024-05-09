@@ -88,10 +88,6 @@ async function getTopTracks(
 		}
 	})
 
-	const username: string = 'ItAintGucci'
-
-	console.log(data)
-
 	return data
 }
 

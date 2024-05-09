@@ -24,12 +24,7 @@ export function Home() {
 
 export function Download() {
 	return (
-		<Button
-			type='submit'
-			variant='outline'
-			size='icon'
-			className='rounded-none'
-		>
+		<Button type='submit' variant='outline' size='icon' className='rounded-none'>
 			<DownloadIcon />
 		</Button>
 	)
@@ -43,11 +38,7 @@ export function Dropdown() {
 					<HamburgerMenuIcon />
 				</Button>
 			</DropdownMenuTrigger>
-			<DropdownMenuContent
-				align='end'
-				sideOffset={8}
-				className='rounded-none'
-			>
+			<DropdownMenuContent align='end' sideOffset={8} className='rounded-none'>
 				<DropdownMenuItem
 					onClick={() => {
 						window.open('https://www.raphaelsalaja.com', '_blank')
@@ -57,20 +48,14 @@ export function Dropdown() {
 				</DropdownMenuItem>
 				<DropdownMenuItem
 					onClick={() => {
-						window.open(
-							'https://www.github.com/rafunderscore',
-							'_blank'
-						)
+						window.open('https://www.github.com/rafunderscore', '_blank')
 					}}
 				>
 					GitHub
 				</DropdownMenuItem>
 				<DropdownMenuItem
 					onClick={() => {
-						window.open(
-							'https://www.twitter.com/raphaelsalaja',
-							'_blank'
-						)
+						window.open('https://www.twitter.com/raphaelsalaja', '_blank')
 					}}
 				>
 					Twitter

@@ -10,7 +10,7 @@ interface UnderlinedLinkProps {
 	space?: string
 }
 
-export function UnderlinedLink({ text, link, space }: UnderlinedLinkProps) {
+function UnderlinedLink({ text, link, space }: UnderlinedLinkProps) {
 	const [hovered, setHovered] = React.useState(false)
 
 	return (
@@ -54,3 +54,5 @@ export function UnderlinedLink({ text, link, space }: UnderlinedLinkProps) {
 		</div>
 	)
 }
+
+export { UnderlinedLink }

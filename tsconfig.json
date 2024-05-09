@@ -27,15 +27,16 @@
 		"**/*.ts",
 		"**/*.tsx",
 		".next/types/**/*.ts",
-		"src/app/experiments/page.mdx",
+		"src/app/pursuits/page.mdx",
 		"src/app/api/route.js",
 		"src/lib/utils/arena/api.ts",
 		"src/components/graph.jsx",
 		"tailwind.config.js",
-		"src/components/arena/graph.jsx",
+		"src/components/spatial.are.na/graph.jsx",
 		".next/types/app/twitter/page.tsx",
 		"src/data/tweets.json",
-		"src/components/last-fm/graph.jsx"
+		"src/components/last-fm/graph.jsx",
+		"src/components/app/arena/arena-graph.jsx"
 	],
 	"exclude": ["node_modules"]
 }

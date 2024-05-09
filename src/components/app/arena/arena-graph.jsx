@@ -10,7 +10,7 @@ import RelativeTimeFormat from 'relative-time-format'
 import en from 'relative-time-format/locale/en'
 import { Mesh, Sprite, SpriteMaterial, TextureLoader } from 'three'
 import SpriteText from 'three-spritetext'
-import { Textarea } from '../ui/textarea'
+import { Textarea } from '../../ui/textarea'
 
 export const ArenaForceGraph = ({ data }) => {
 	RelativeTimeFormat.addLocale(en)
@@ -66,13 +66,10 @@ export const ArenaForceGraph = ({ data }) => {
 	const block = (node) => {
 		const mesh = new Mesh()
 		const sprite = new Sprite()
-		const texture = new TextureLoader().load(
-			node.arena.image?.thumb.url ?? '',
-			(tex) => {
-				tex.needsUpdate = true
-				sprite.scale.set(tex.image.width / 20, tex.image.height / 20, 1)
-			}
-		)
+		const texture = new TextureLoader().load(node.arena.image?.thumb.url ?? '', (tex) => {
+			tex.needsUpdate = true
+			sprite.scale.set(tex.image.width / 20, tex.image.height / 20, 1)
+		})
 		sprite.material = new SpriteMaterial({
 			map: texture,
 			transparent: true,
@@ -158,8 +155,7 @@ export const ArenaForceGraph = ({ data }) => {
 									<span className='max-w-[200px] overflow-hidden overflow-ellipsis whitespace-nowrap'>
 										{selectedNode.arena.title
 											? selectedNode.arena.title
-											: selectedNode.arena
-													.generated_title}
+											: selectedNode.arena.generated_title}
 									</span>
 									<Button
 										variant='outline'
@@ -211,9 +207,7 @@ export const ArenaForceGraph = ({ data }) => {
 											<Textarea
 												className='h-full w-full rounded-none border'
 												placeholder=''
-												value={
-													selectedNode.arena.content
-												}
+												value={selectedNode.arena.content}
 												readOnly
 											/>
 										</motion.div>
@@ -222,17 +216,11 @@ export const ArenaForceGraph = ({ data }) => {
 
 								<ul className='grid gap-3 p-6'>
 									<li className='flex items-center justify-between'>
-										<span className='text-muted-foreground'>
-											Added
-										</span>
+										<span className='text-muted-foreground'>Added</span>
 										<span>
 											{selectedNode.arena.created_at ? (
 												<RelativeTime
-													value={
-														new Date(
-															selectedNode.arena.created_at
-														)
-													}
+													value={new Date(selectedNode.arena.created_at)}
 												/>
 											) : (
 												<RelativeTime
@@ -246,30 +234,17 @@ export const ArenaForceGraph = ({ data }) => {
 										</span>
 									</li>
 									<li className='flex items-center justify-between'>
-										<span className='text-muted-foreground'>
-											Modified
-										</span>
+										<span className='text-muted-foreground'>Modified</span>
 										<span>
 											<RelativeTime
-												value={
-													new Date(
-														selectedNode.arena.updated_at
-													)
-												}
+												value={new Date(selectedNode.arena.updated_at)}
 											/>
 										</span>
 									</li>
 									<li className='flex items-center justify-between'>
-										<span className='text-muted-foreground'>
-											By
-										</span>
+										<span className='text-muted-foreground'>By</span>
 										<span>
-											<span>
-												{
-													selectedNode.arena.user
-														.full_name
-												}
-											</span>
+											<span>{selectedNode.arena.user.full_name}</span>
 										</span>
 									</li>
 								</ul>
@@ -279,14 +254,10 @@ export const ArenaForceGraph = ({ data }) => {
 										variant='outline'
 										className='w-full rounded-none'
 										onClick={() => {
-											if (
-												selectedNode.arena.class ===
-												'channel'
-											) {
+											if (selectedNode.arena.class === 'channel') {
 												window.open(
 													'https://www.are.na/' +
-														selectedNode.arena.user
-															.slug +
+														selectedNode.arena.user.slug +
 														'/' +
 														selectedNode.arena.slug,
 													'_blank'

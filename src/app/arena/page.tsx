@@ -1,11 +1,6 @@
 'use client'
 
-import {
-	Dropdown,
-	Home,
-	Loading,
-	Search,
-} from '@/components/arena/graph-instruments'
+import { Dropdown, Home, Loading, Search } from '@/components/app/arena/arena-graph-instruments'
 import { AnimatePresence, motion } from 'framer-motion'
 import dynamic from 'next/dynamic'
 import { useState } from 'react'
@@ -22,10 +17,7 @@ export default function ArenaGraph() {
 	}
 
 	const ArenaForceGraph = dynamic(
-		() =>
-			import('@/components/arena/graph').then(
-				(module) => module.ArenaForceGraph
-			),
+		() => import('@/components/app/arena/arena-graph').then((module) => module.ArenaForceGraph),
 		{
 			loading: () => <Loading />,
 			ssr: true,
@@ -52,10 +44,7 @@ export default function ArenaGraph() {
 						<div className='flex justify-between'>
 							<div className='flex gap-2'>
 								<Home />
-								<Search
-									state={state}
-									onDataReceived={handleDataReceived}
-								/>
+								<Search state={state} onDataReceived={handleDataReceived} />
 							</div>
 							<div className='flex gap-2'>
 								<Dropdown />
@@ -78,24 +67,16 @@ export default function ArenaGraph() {
 													<div>adjective</div>
 												</div>
 												<div className='flex flex-col gap-2 '>
+													<div>relating to or occupying space</div>
 													<div>
-														relating to or occupying
-														space
+														To begin, paste a link to an Are.na block or
+														channel, or search for anything above.
 													</div>
 													<div>
-														To begin, paste a link
-														to an Are.na block or
-														channel, or search for
-														anything above.
-													</div>
-													<div>
-														Note, this is a work in
-														progress and may not
-														work as expected. Please
-														report any issues you
-														find or any suggestions
-														you would like to see
-														added.
+														Note, this is a work in progress and may not
+														work as expected. Please report any issues
+														you find or any suggestions you would like
+														to see added.
 													</div>
 												</div>
 											</div>
@@ -113,9 +94,7 @@ export default function ArenaGraph() {
 								case 'connections':
 									return (
 										<div className='h-full w-full'>
-											<ArenaForceGraph
-												data={searchData}
-											/>
+											<ArenaForceGraph data={searchData} />
 										</div>
 									)
 								default:

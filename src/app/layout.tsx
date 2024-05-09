@@ -1,6 +1,8 @@
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/react'
+import { GeistSans } from 'geist/font/sans'
 import type { Metadata } from 'next'
+
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -45,11 +47,17 @@ export default function RootLayout({
 	children: React.ReactNode
 }>) {
 	return (
-		<html lang="en">
+		<html lang='en' className={GeistSans.className}>
 			<body>
-				{children}
-				<Analytics />
-				<SpeedInsights />
+				<div className='md:flex md:flex-row md:justify-center'>
+					<div className='md:w-full md:min-w-[512px] md:max-w-xl'>
+						<div className='flex max-w-xl flex-col justify-start px-8 py-12'>
+							{children}
+							<Analytics />
+							<SpeedInsights />
+						</div>
+					</div>
+				</div>
 			</body>
 		</html>
 	)
