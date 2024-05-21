@@ -1,10 +1,9 @@
-const withMDX = require('@next/mdx')()
-const webpack = require("webpack");
-
 /** @type {import('next').NextConfig} */
 
+const withMDX = require('@next/mdx')()
+
 const nextConfig = {
-    pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
+    pageExtensions: ["md", "mdx", "tsx", "ts", "jsx", "js"],
     reactStrictMode: true,
     swcMinify: true,
     images: {

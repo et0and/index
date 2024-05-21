@@ -18,25 +18,18 @@
 			}
 		],
 		"paths": {
-			"@/*": ["./src/*"]
+			"@/*": ["./*"]
 		},
 		"target": "ES2017"
 	},
 	"include": [
+		"video.d.ts",
 		"next-env.d.ts",
 		"**/*.ts",
 		"**/*.tsx",
 		".next/types/**/*.ts",
-		"src/app/pursuits/page.mdx",
-		"src/app/api/route.js",
-		"src/lib/utils/arena/api.ts",
-		"src/components/graph.jsx",
-		"tailwind.config.js",
-		"src/components/spatial.are.na/graph.jsx",
-		".next/types/app/twitter/page.tsx",
-		"src/data/tweets.json",
-		"src/components/last-fm/graph.jsx",
-		"src/components/app/arena/arena-graph.jsx"
+		"components/projects/arena.tsx",
+		"components/projects/arena.tsx"
 	],
 	"exclude": ["node_modules"]
 }

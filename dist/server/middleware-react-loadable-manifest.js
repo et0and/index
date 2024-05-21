@@ -1,1 +1,0 @@
-self.__REACT_LOADABLE_MANIFEST="{\"app/last-fm/page.tsx -> @/components/last-fm/graph\":{\"id\":\"app/last-fm/page.tsx -> @/components/last-fm/graph\",\"files\":[]}}"

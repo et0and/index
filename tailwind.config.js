@@ -4,9 +4,10 @@ const { fontFamily } = require('tailwindcss/defaultTheme')
 /** @type {import('tailwindcss').Config} \*/
 module.exports = {
 	content: [
-		'./src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-		'./src/components/**/*.{js,ts,jsx,tsx,mdx}',
-		'./src/app/**/*.{js,ts,jsx,tsx,mdx}'
+		'./pages/**/*.{js,ts,jsx,tsx,mdx}',
+		'./components/**/*.{js,ts,jsx,tsx,mdx}',
+		'./app/**/*.{js,ts,jsx,tsx,mdx}',
+		'./videos/**/*.{mp4,webm,ogg}',
 	],
 	theme: {
 		container: {
@@ -51,6 +52,7 @@ module.exports = {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))',
 				},
+				link: '#5EB1EF',
 			},
 			borderRadius: {
 				lg: `var(--radius)`,
@@ -58,7 +60,7 @@ module.exports = {
 				sm: 'calc(var(--radius) - 4px)',
 			},
 			fontFamily: {
-				inter: ['var(--font-inter)', ...fontFamily.sans], // <--------- 👈
+				inter: ['var(--font-inter)', ...fontFamily.sans],
 			},
 			keyframes: {
 				'accordion-down': {
