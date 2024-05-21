@@ -3,7 +3,11 @@ import { MDXComponents } from 'mdx/types'
 import { MDXRemote, MDXRemoteProps } from 'next-mdx-remote/rsc'
 import { JSX } from 'react'
 
-import ArenaGraphExample from './components/projects/arena'
+import dynamic from 'next/dynamic'
+
+const ArenaGraphExample = dynamic(() => import('./components/projects/arena'), {
+	ssr: false,
+})
 
 const components: MDXComponents = {
 	h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
