@@ -26,7 +26,6 @@ export type OpenGraphMetadata = {
 		apple: string
 	}
 	url: string
-	image: string
 	links: {
 		twitter: string
 		github: string
@@ -88,7 +87,6 @@ export const og: OpenGraphMetadata = {
 		apple: '/apple-touch-icon.png',
 	},
 	url: 'https://raphaelsalaja.com',
-	image: 'https://raphaelsalaja.com/api/og',
 	links: {
 		twitter: 'https://twitter.com/raphaelsalaja',
 		github: 'https://github.com/rafunderscore',

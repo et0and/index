@@ -27,14 +27,16 @@ export function generateMetadata({ params }: { params: any }) {
 		openGraph: {
 			title,
 			description,
-			type: 'article',
+			type: 'website',
 			date,
-			url: `https://raphaelsalaja.com/blog/${post.slug}`,
+			url: `https://raphaelsalaja.com/projects/${post.slug}`,
+			images: ['https://raphaelsalaja.com/api/og'],
 		},
 		twitter: {
 			card: 'summary_large_image',
 			title,
 			description,
+			images: ['https://raphaelsalaja.com/api/og'],
 		},
 	}
 }
