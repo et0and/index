@@ -1,8 +1,9 @@
 'use client'
 
-import { Dropdown, Home, Loading, Search } from '@/components/app/arena/arena-graph-instruments'
-import { AnimatePresence, motion } from 'framer-motion'
 import dynamic from 'next/dynamic'
+
+import { Dropdown, Home, Loading, Search } from '@/components/arena-graph-instruments'
+import { AnimatePresence, motion } from 'framer-motion'
 import { useState } from 'react'
 
 export type ArenaGraphState = 'idle' | 'loading' | 'connections'
@@ -17,7 +18,7 @@ export default function ArenaGraph() {
 	}
 
 	const ArenaForceGraph = dynamic(
-		() => import('@/components/app/arena/arena-graph').then((module) => module.ArenaForceGraph),
+		() => import('@/components/arena-graph').then((module) => module.ArenaForceGraph),
 		{
 			loading: () => <Loading />,
 			ssr: true,

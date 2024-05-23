@@ -57,7 +57,7 @@ export default function Blog({ params }: { params: any }) {
 					<h2>Home</h2>
 				</Link>
 				<div className='flex justify-between'>
-					<h1>{post.metadata.title}</h1>
+					<h1 className='view-transition-project-heading'>{post.metadata.title}</h1>
 					<h2>{post.metadata.date}</h2>
 				</div>
 			</div>

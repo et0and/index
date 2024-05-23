@@ -10,7 +10,7 @@ import RelativeTimeFormat from 'relative-time-format'
 import en from 'relative-time-format/locale/en'
 import { Mesh, Sprite, SpriteMaterial, TextureLoader } from 'three'
 import SpriteText from 'three-spritetext'
-import { Textarea } from '../../ui/textarea'
+import { Textarea } from './ui/textarea'
 
 export const ArenaForceGraph = ({ data }) => {
 	RelativeTimeFormat.addLocale(en)

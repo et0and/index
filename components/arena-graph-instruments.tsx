@@ -1,18 +1,18 @@
 'use client'
 
-import { DownloadIcon, HamburgerMenuIcon } from '@radix-ui/react-icons'
-import { motion } from 'framer-motion'
-import { getDataFromSearch, getDataFromURL } from '../../../lib/arena'
-import { cn } from '../../../lib/utils'
-import { ArenaIcon } from '../../icons'
-import { Button } from '../../ui/button'
+import { ArenaIcon } from '@/components/icons'
+import { Button } from '@/components/ui/button'
 import {
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuItem,
 	DropdownMenuTrigger,
-} from '../../ui/dropdown-menu'
-import { Input } from '../../ui/input'
+} from '@/components/ui/dropdown-menu'
+import { Input } from '@/components/ui/input'
+import { getDataFromSearch, getDataFromURL } from '@/lib/arena'
+import { cn } from '@/lib/utils'
+import { DownloadIcon, HamburgerMenuIcon } from '@radix-ui/react-icons'
+import { motion } from 'framer-motion'
 
 export function Home() {
 	return (

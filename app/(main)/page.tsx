@@ -1,4 +1,4 @@
-import { Home } from '@/components/app/home/home'
+import { Home } from '@/components/home'
 import { getProjects } from '@/lib/mdx-utils'
 
 export default function Page() {

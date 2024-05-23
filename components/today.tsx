@@ -1,4 +1,4 @@
-import { UnderlinedLink } from '../../../underlined-link'
+import { UnderlinedLink } from '@/components/underlined-link'
 
 const Today = () => {
 	return (

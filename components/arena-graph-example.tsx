@@ -3,8 +3,8 @@
 import { getDataFromURL } from '@/lib/arena'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
-import { ArenaForceGraph } from '../app/arena/arena-graph'
-import { Loading } from '../app/arena/arena-graph-instruments'
+import { ArenaForceGraph } from './arena-graph'
+import { Loading } from './arena-graph-instruments'
 
 export type ArenaGraphState = 'idle' | 'loading' | 'connections'
 

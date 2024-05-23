@@ -5,7 +5,7 @@ import { JSX } from 'react'
 
 import dynamic from 'next/dynamic'
 
-const ArenaGraphExample = dynamic(() => import('./components/projects/arena'), {
+const ArenaGraphExample = dynamic(() => import('@/components/arena-graph-example'), {
 	ssr: false,
 })
 
@@ -47,4 +47,10 @@ const components: MDXComponents = {
 
 export function MDX(props: JSX.IntrinsicAttributes & MDXRemoteProps) {
 	return <MDXRemote {...props} components={{ ...components, ...(props.components || {}) }} />
+}
+
+export function useMDXComponents(components: MDXComponents): MDXComponents {
+	return {
+		...components,
+	}
 }

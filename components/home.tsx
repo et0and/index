@@ -1,10 +1,11 @@
 'use client'
 
+import { Contact } from '@/components/contact'
+import { Profile } from '@/components/profile'
+import { Projects } from '@/components/projects'
+import { Today } from '@/components/today'
+
 import { motion } from 'framer-motion'
-import { Contact } from './modules/contact'
-import { Profile } from './modules/profile'
-import { Projects } from './modules/projects'
-import { Today } from './modules/today'
 
 const article = {
 	show: {

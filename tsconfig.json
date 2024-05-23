@@ -22,14 +22,6 @@
 		},
 		"target": "ES2017"
 	},
-	"include": [
-		"video.d.ts",
-		"next-env.d.ts",
-		"**/*.ts",
-		"**/*.tsx",
-		".next/types/**/*.ts",
-		"components/projects/arena.tsx",
-		"components/projects/arena.tsx"
-	],
+	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
 	"exclude": ["node_modules"]
 }
