@@ -2,12 +2,22 @@ import { ImageResponse } from 'next/og'
 
 export const runtime = 'edge'
 
+type Parameters = {
+	width?: number
+	height?: number
+	title?: string
+}
+
 export async function GET(request: Request) {
 	try {
-		// URL
+		// SEARCH PARAMS
 		const { searchParams } = new URL(request.url)
+		const parameters: Parameters = Object.fromEntries(searchParams)
+		console.log(parameters)
+
+		// PARAMETERS
+
 		const hasTitle = searchParams.has('title')
-		const title = searchParams.get('title')
 
 		// FONT
 		const geist = await fetch(
@@ -16,11 +26,17 @@ export async function GET(request: Request) {
 
 		return new ImageResponse(
 			(
-				<div tw='h-full w-full flex flex-col justify-end items-start bg-white p-20 relative'>
+				<div tw='h-full w-full flex flex-col justify-start items-end bg-white p-20 relative'>
 					{hasTitle ? (
-						<div tw='flex flex-col items-baseline'>
+						<div tw='flex flex-col items-end'>
 							<p tw='text-4xl tracking-tighter opacity-20 mb-0'>Raphael Salaja</p>
-							<p tw='text-4xl tracking-tighter mb-0'>{title}</p>
+							{parameters.title && parameters.title.length > 20 ? (
+								<p tw='text-4xl tracking-tighter mb-0'>
+									{parameters.title.slice(0, 40)}...
+								</p>
+							) : (
+								<p tw='text-4xl tracking-tighter mb-0'>{parameters.title}</p>
+							)}
 						</div>
 					) : (
 						<p tw='text-4xl tracking-tighter mr-4 mb-0'>Raphael Salaja</p>
@@ -28,6 +44,8 @@ export async function GET(request: Request) {
 				</div>
 			),
 			{
+				width: parameters.width || 1200,
+				height: parameters.height || 630,
 				fonts: [
 					{
 						name: 'Geist',

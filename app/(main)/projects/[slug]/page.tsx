@@ -30,13 +30,13 @@ export function generateMetadata({ params }: { params: any }) {
 			type: 'website',
 			date,
 			url: `https://raphaelsalaja.com/projects/${post.slug}`,
-			images: ['https://raphaelsalaja.com/api/og'],
+			images: ['https://raphaelsalaja.com/api/og?title=' + encodeURIComponent(title)],
 		},
 		twitter: {
 			card: 'summary_large_image',
 			title,
 			description,
-			images: ['https://raphaelsalaja.com/api/og'],
+			images: ['https://raphaelsalaja.com/api/og?title=' + encodeURIComponent(title)],
 		},
 	}
 }
