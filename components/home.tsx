@@ -3,9 +3,8 @@
 import { Contact } from '@/components/contact'
 import { Profile } from '@/components/profile'
 import { Projects } from '@/components/projects'
-import { Today } from '@/components/today'
-
 import { motion } from 'framer-motion'
+import { HeadlessMotion } from './headless-motion'
 
 const article = {
 	show: {
@@ -36,7 +35,7 @@ const section = {
 	},
 }
 
-function Home({ projects }: { projects: any[] }) {
+function Home({ projects, headless }: { projects: any[]; headless: any[] }) {
 	return (
 		<motion.article
 			className='flex flex-col gap-8'
@@ -48,10 +47,10 @@ function Home({ projects }: { projects: any[] }) {
 				<Profile />
 			</motion.section>
 			<motion.section variants={section} className='flex flex-col gap-2'>
-				<Today />
+				<Projects projects={projects} />
 			</motion.section>
 			<motion.section variants={section} className='flex flex-col gap-2'>
-				<Projects projects={projects} />
+				<HeadlessMotion projects={headless} />
 			</motion.section>
 			<motion.section variants={section} className='flex flex-col gap-2'>
 				<Contact />

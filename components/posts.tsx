@@ -1,8 +1,8 @@
-import { getProjects } from '@/lib/mdx-utils'
+import { getPosts } from '@/lib/mdx-utils'
 import Link from 'next/link'
 
 export function Projects() {
-	let posts = getProjects()
+	let posts = getPosts()
 
 	return (
 		<div>

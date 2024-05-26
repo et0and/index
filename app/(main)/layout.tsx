@@ -1,15 +1,12 @@
-import type { Metadata } from 'next'
-
-import { GeistMono } from 'geist/font/mono'
-import { GeistSans } from 'geist/font/sans'
-
-import { ViewTransitions } from 'next-view-transitions'
-
+import { Toaster } from '@/components/ui/sonner'
+import { og } from '@/config/site'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/react'
-import { VercelToolbar } from '@vercel/toolbar/next'
+import { GeistMono } from 'geist/font/mono'
+import { GeistSans } from 'geist/font/sans'
+import type { Metadata } from 'next'
+import { ViewTransitions } from 'next-view-transitions'
 
-import { og } from '@/config/site'
 import '@/styles/globals.css'
 
 export const metadata: Metadata = {
@@ -49,9 +46,10 @@ export default function RootLayout({
 					<div className='flex w-full max-w-[640px] flex-col justify-start gap-8 px-8 py-16'>
 						{children}
 					</div>
-					{shouldInjectToolbar && <VercelToolbar />}
 					<Analytics />
 					<SpeedInsights />
+					<Toaster />
+					{/* {shouldInjectToolbar && <VercelToolbar />} */}
 				</body>
 			</html>
 		</ViewTransitions>

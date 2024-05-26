@@ -2,7 +2,7 @@ import fs from 'fs'
 import matter from 'gray-matter'
 import path from 'path'
 
-import { Metadata } from '@/lib/classes/metadata'
+import { Metadata } from '@/types/metadata'
 
 function parseFrontmatter(fileContent: string) {
 	const { data, content } = matter(fileContent)
@@ -13,6 +13,7 @@ function parseFrontmatter(fileContent: string) {
 		date: data.date || '',
 		summary: data.summary || '',
 		tags: data.tags || [],
+		live: data.live || '',
 	}
 
 	return { metadata, content }
@@ -28,8 +29,8 @@ function readMDXFile(filePath: string) {
 	return parseFrontmatter(rawContent)
 }
 
-function getProjects() {
-	const dir = path.join(process.cwd(), 'app', '(main)', 'projects', 'posts')
+function getPosts({ folder }: { folder: string } = { folder: 'projects' }) {
+	const dir = path.join(process.cwd(), 'app', '(main)', folder, 'posts')
 
 	const mdxFiles = getMDXFiles(dir)
 
@@ -45,4 +46,4 @@ function getProjects() {
 	})
 }
 
-export { getProjects }
+export { getPosts }

@@ -1,13 +1,23 @@
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
 import { cn } from '@/lib/utils'
+import { ExternalLinkIcon } from '@radix-ui/react-icons'
 import { MDXComponents } from 'mdx/types'
 import { MDXRemote, MDXRemoteProps } from 'next-mdx-remote/rsc'
-import { JSX } from 'react'
+import { Link } from 'next-view-transitions'
 
 import dynamic from 'next/dynamic'
+import React from 'react'
 
-const ArenaGraphExample = dynamic(() => import('@/components/arena-graph-example'), {
+const ArenaGraphExample = dynamic(() => import('@/components/graph-example'), {
 	ssr: false,
 })
+
+const ButtonDelayedIcon = dynamic(
+	() => import('@/components/headless-motion/button-delayed-icon'),
+	{
+		ssr: false,
+	}
+)
 
 const components: MDXComponents = {
 	h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
@@ -29,6 +39,8 @@ const components: MDXComponents = {
 			{...props}
 		/>
 	),
+
+	Link: ({ children, href, ...props }) => <Link href={href}>{children}</Link>,
 	Showcase: ({ children, caption }) => (
 		<div className='my-6 flex flex-col justify-end gap-2'>
 			<div
@@ -42,7 +54,45 @@ const components: MDXComponents = {
 			{caption && <p className='text-center text-xs text-gray-500'>{caption}</p>}
 		</div>
 	),
+
+	// PROJECTS
 	ArenaGraph: () => <ArenaGraphExample />,
+
+	// HEADLESS MOTION
+	ComponentContainer: ({ children }) => (
+		<div className='my-6 flex flex-col justify-end gap-2'>
+			<div
+				className='relative overflow-hidden border '
+				style={{
+					height: '24rem',
+				}}
+			>
+				{/* top right */}
+
+				<TooltipProvider>
+					<Tooltip>
+						<TooltipTrigger asChild>
+							<div className='absolute right-0 top-0 isolate p-2'>
+								<div className='border p-1'>
+									<ExternalLinkIcon />
+								</div>
+							</div>
+						</TooltipTrigger>
+						<TooltipContent>
+							<p>View Source Code</p>
+						</TooltipContent>
+					</Tooltip>
+				</TooltipProvider>
+
+				<div className='flex h-full items-center justify-center'>{children}</div>
+			</div>
+		</div>
+	),
+	ButtonDelayed: () => <ButtonDelayedIcon />,
+	Tooltip,
+	TooltipContent,
+	TooltipProvider,
+	TooltipTrigger,
 }
 
 export function MDX(props: JSX.IntrinsicAttributes & MDXRemoteProps) {

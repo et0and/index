@@ -1,4 +1,5 @@
 // tailwind.config.js
+const { sky } = require('@radix-ui/colors')
 const { fontFamily } = require('tailwindcss/defaultTheme')
 
 /** @type {import('tailwindcss').Config} \*/
@@ -53,6 +54,7 @@ module.exports = {
 					foreground: 'hsl(var(--card-foreground))',
 				},
 				link: '#5EB1EF',
+
 			},
 			borderRadius: {
 				lg: `var(--radius)`,

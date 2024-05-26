@@ -14,7 +14,7 @@ export async function generateStaticParams() {
 }
 
 export function generateMetadata({ params }: { params: any }) {
-	let post = getPosts().find((post) => post.slug === params.slug)
+	let post = getPosts({ folder: 'headless-motion' }).find((post) => post.slug === params.slug)
 
 	if (!post) {
 		return
@@ -30,7 +30,7 @@ export function generateMetadata({ params }: { params: any }) {
 			description,
 			type: 'website',
 			date,
-			url: `https://raphaelsalaja.com/projects/${post.slug}`,
+			url: `https://raphaelsalaja.com/headless-motion/${post.slug}`,
 			images: ['https://raphaelsalaja.com/api/og?title=' + encodeURIComponent(title)],
 		},
 		twitter: {
@@ -43,7 +43,7 @@ export function generateMetadata({ params }: { params: any }) {
 }
 
 export default function Blog({ params }: { params: any }) {
-	let post = getPosts().find((post) => post.slug === params.slug)
+	let post = getPosts({ folder: 'headless-motion' }).find((post) => post.slug === params.slug)
 
 	if (!post) {
 		notFound()
@@ -67,7 +67,7 @@ export default function Blog({ params }: { params: any }) {
 
 			<MDX source={post.content} />
 
-			{post.metadata.live && <ViewProductionButton href={post.metadata.live} />}
+			{post.metadata.live.length > 0 && <ViewProductionButton href={post.metadata.live} />}
 		</div>
 	)
 }

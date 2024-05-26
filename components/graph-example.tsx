@@ -1,10 +1,10 @@
 'use client'
 
+import { ArenaForceGraph } from '@/components/graph'
+import { Loading } from '@/components/graph-instruments'
 import { getDataFromURL } from '@/lib/arena'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
-import { ArenaForceGraph } from './arena-graph'
-import { Loading } from './arena-graph-instruments'
 
 export type ArenaGraphState = 'idle' | 'loading' | 'connections'
 

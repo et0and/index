@@ -1,6 +1,7 @@
+import { getPosts } from '@/lib/mdx-utils'
+
 import { Home } from '@/components/home'
-import { getProjects } from '@/lib/mdx-utils'
 
 export default function Page() {
-	return <Home projects={getProjects()} />
+	return <Home projects={getPosts()} headless={getPosts({ folder: 'headless-motion' })} />
 }

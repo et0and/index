@@ -1,12 +1,14 @@
 /** @type {import('next').NextConfig} */
 
-const withMDX = require('@next/mdx')()
-const withVercelToolbar = require('@vercel/toolbar/plugins/next')();
+
 
 const nextConfig = {
     pageExtensions: ["md", "mdx", "tsx", "ts", "jsx", "js"],
     reactStrictMode: true,
     swcMinify: true,
+    experimental: {
+        mdxRs: true,
+    },
     images: {
         domains: [
             'avatar.vercel.sh',
@@ -18,5 +20,9 @@ const nextConfig = {
     }
 }
 
-module.exports = withMDX(nextConfig)
-module.exports = withVercelToolbar(nextConfig)
+const withVercelToolbar = require('@vercel/toolbar/plugins/next')();
+const withMDX = require('@next/mdx')()
+
+module.exports = withVercelToolbar(withMDX(nextConfig))
+
+

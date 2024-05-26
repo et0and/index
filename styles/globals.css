@@ -71,13 +71,6 @@
   display: none;
 }
 
-/* For IE, Edge and Firefox */
-.scrollbar-hide {
-  -ms-overflow-style: none;
-  /* IE and Edge */
-  scrollbar-width: none;
-  /* Firefox */
-}
 
 .inset-shadow-stroke {
   --tw-shadow: 0 8px 24px 0 rgba(0, 0, 0, .2), 0 2px 8px 0 rgba(0, 0, 0, .08), inset 0 0 0 1px rgba(0, 0, 0, .2), inset 0 0 0 2px hsla(0, 0%, 100%, .14);

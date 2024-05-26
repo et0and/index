@@ -2,7 +2,7 @@
 
 import dynamic from 'next/dynamic'
 
-import { Dropdown, Home, Loading, Search } from '@/components/arena-graph-instruments'
+import { Dropdown, Home, Loading, Search } from '@/components/graph-instruments'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useState } from 'react'
 
@@ -18,7 +18,7 @@ export default function ArenaGraph() {
 	}
 
 	const ArenaForceGraph = dynamic(
-		() => import('@/components/arena-graph').then((module) => module.ArenaForceGraph),
+		() => import('@/components/graph').then((module) => module.ArenaForceGraph),
 		{
 			loading: () => <Loading />,
 			ssr: true,

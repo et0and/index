@@ -1,9 +1,9 @@
-import { getProjects } from '@/lib/mdx-utils'
+import { getPosts } from '@/lib/mdx-utils'
 
 export const site = 'https://raphaelsalaja.com'
 
 export default async function sitemap() {
-	let projects = getProjects().map((post) => ({
+	let projects = getPosts().map((post) => ({
 		url: `${site}/projects/${post.slug}`,
 	}))
 

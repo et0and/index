@@ -1,5 +1,6 @@
 import Arena from 'are.na'
-import { GraphData } from './graph'
+
+import { GraphData } from '../types/graph'
 
 let arena = new Arena({
 	accessToken: 'xUL8AvT4OQE4Yesa8glQdJNoGtTqgD_lOx1blFqXcwE',
@@ -15,9 +16,7 @@ export async function getDataFromURL(url: string) {
 		let slug = url.split('/block/')[1]
 		let connections = arena.block(slug).channels()
 		let slugs = (await connections).map((connections) => connections.slug)
-		let channels = await Promise.all(
-			slugs.map((slug) => arena.channel(slug).get())
-		)
+		let channels = await Promise.all(slugs.map((slug) => arena.channel(slug).get()))
 
 		for (let channel of channels) {
 			data.nodes.push({
