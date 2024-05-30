@@ -4,6 +4,7 @@ import { ExternalLinkIcon } from '@radix-ui/react-icons'
 import { MDXComponents } from 'mdx/types'
 import { MDXRemote, MDXRemoteProps } from 'next-mdx-remote/rsc'
 import { Link } from 'next-view-transitions'
+import Image from 'next/image'
 
 import dynamic from 'next/dynamic'
 import React from 'react'
@@ -18,6 +19,10 @@ const ButtonDelayedIcon = dynamic(
 		ssr: false,
 	}
 )
+
+const MdxImage = (props: React.ComponentProps<typeof Image>) => {
+	return <Image {...props} alt={props.alt || ''} />
+}
 
 const components: MDXComponents = {
 	h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
@@ -93,6 +98,7 @@ const components: MDXComponents = {
 	TooltipContent,
 	TooltipProvider,
 	TooltipTrigger,
+	Image: MdxImage, // Register the custom Image component
 }
 
 export function MDX(props: JSX.IntrinsicAttributes & MDXRemoteProps) {

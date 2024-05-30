@@ -22,6 +22,8 @@ export function generateMetadata({ params }: { params: any }) {
 
 	let { title, date: date, summary: description } = post.metadata
 
+	title = `${title} | Catalogue raisonné`
+
 	return {
 		title,
 		description,
@@ -30,14 +32,14 @@ export function generateMetadata({ params }: { params: any }) {
 			description,
 			type: 'website',
 			date,
-			url: `https://raphaelsalaja.com/projects/${post.slug}`,
-			images: ['https://raphaelsalaja.com/api/og?title=' + encodeURIComponent(title)],
+			url: `https://index.tom.so/projects/${post.slug}`,
+			images: ['https://index.tom.so/api/og?title=' + encodeURIComponent(title)],
 		},
 		twitter: {
 			card: 'summary_large_image',
 			title,
 			description,
-			images: ['https://raphaelsalaja.com/api/og?title=' + encodeURIComponent(title)],
+			images: ['https://index.tom.so/api/og?title=' + encodeURIComponent(title)],
 		},
 	}
 }
@@ -58,9 +60,11 @@ export default function Blog({ params }: { params: any }) {
 						className='flex items-center gap-2 text-sm text-gray-500 hover:text-gray-700 md:absolute md:-translate-x-60'
 					>
 						<ArrowLeftIcon />
-						<h2>Home</h2>
+						<p className='hover:underline'>Home</p>
 					</Link>
-					<h1 className='view-transition-project-heading'>{post.metadata.title}</h1>
+					<h1 className='view-transition-project-heading text-xl font-medium'>
+						{post.metadata.title}
+					</h1>
 					<h2>{post.metadata.date}</h2>
 				</div>
 			</div>

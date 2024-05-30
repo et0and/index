@@ -42,8 +42,8 @@ export default function RootLayout({
 	return (
 		<ViewTransitions>
 			<html lang='en' className={GeistSans.variable + ' ' + GeistMono.variable}>
-				<body className='flex items-center justify-center text-justify'>
-					<div className='flex w-full max-w-[640px] flex-col justify-start gap-8 px-8 py-16'>
+				<body className='flex w-full items-center justify-center text-justify'>
+					<div className='flex w-full max-w-[1200px] flex-col justify-start gap-8 px-8 py-16'>
 						{children}
 					</div>
 					<Analytics />

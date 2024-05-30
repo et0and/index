@@ -29,7 +29,9 @@ export async function GET(request: Request) {
 				<div tw='h-full w-full flex flex-col justify-start items-end bg-white p-20 relative'>
 					{hasTitle ? (
 						<div tw='flex flex-col items-end'>
-							<p tw='text-4xl tracking-tighter opacity-20 mb-0'>Raphael Salaja</p>
+							<p tw='text-4xl tracking-tighter opacity-20 mb-0'>
+								Index - Tom Hackshaw
+							</p>
 							{parameters.title && parameters.title.length > 20 ? (
 								<p tw='text-4xl tracking-tighter mb-0'>
 									{parameters.title.slice(0, 40)}...
@@ -39,7 +41,7 @@ export async function GET(request: Request) {
 							)}
 						</div>
 					) : (
-						<p tw='text-4xl tracking-tighter mr-4 mb-0'>Raphael Salaja</p>
+						<p tw='text-4xl tracking-tighter mr-4 mb-0'>Index - Tom Hackshaw</p>
 					)}
 				</div>
 			),

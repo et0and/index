@@ -34,25 +34,11 @@ export type OpenGraphMetadata = {
 
 export const og: OpenGraphMetadata = {
 	title: {
-		default: 'Raphael Salaja',
+		default: 'Catalogue raisonné | Index',
 		template: '%s',
 	},
-	description:
-		'An individual who defies traditional categorisation within creative endeavors, blending diverse influences and mediums to produce innovative works. Also a multidisciplinary artist who transcends boundaries, creating without limitations.',
-	keywords: [
-		'Raphael Salaja',
-		'Genreless Creator',
-		'Creative Endeavors',
-		'Multidisciplinary Artist',
-		'Innovative Works',
-		'Open Source',
-		'Generative Art',
-		'GitHub',
-		'Patreon',
-		'Instagram',
-		'YouTube',
-		'Twitter',
-	],
+	description: 'Catalog of works. 2014 to present.',
+	keywords: ['Tom Hackshaw', 'Index', 'Catalog'],
 	authors: [
 		{
 			name: 'shadcn',
@@ -66,29 +52,27 @@ export const og: OpenGraphMetadata = {
 	],
 	openGraph: {
 		type: 'website',
-		locale: 'en_US',
-		url: 'https://raphaelsalaja.com',
-		title: 'Raphael Salaja',
-		description:
-			'An individual who defies traditional categorisation within creative endeavors, blending diverse influences and mediums to produce innovative works. Also a multidisciplinary artist who transcends boundaries, creating without limitations.',
-		siteName: 'Raphael Salaja',
+		locale: 'en_NZ',
+		url: 'https://index.tom.so',
+		title: 'Catalogue raisonné | Index',
+		description: 'Catalog of works. 2014 to present.',
+		siteName: 'Catalogue raisonné | Index',
 	},
 	twitter: {
 		card: 'summary_large_image',
-		title: 'Raphael Salaja',
-		description:
-			'An individual who defies traditional categorisation within creative endeavors, blending diverse influences and mediums to produce innovative works. Also a multidisciplinary artist who transcends boundaries, creating without limitations.',
-		images: ['https://raphaelsalaja.com/api/og'],
-		creator: '@raphaelsalaja',
+		title: 'Catalogue raisonné | Index',
+		description: 'Catalog of works. 2014 to present.',
+		images: ['https://index.to.so/api/og'],
+		creator: '@tomhackshaw',
 	},
 	icons: {
 		icon: '/favicon.ico',
 		shortcut: '/favicon-16x16.png',
 		apple: '/apple-touch-icon.png',
 	},
-	url: 'https://raphaelsalaja.com',
+	url: 'https://index.tom.so',
 	links: {
-		twitter: 'https://twitter.com/raphaelsalaja',
-		github: 'https://github.com/rafunderscore',
+		twitter: 'https://twitter.com/tomhackshaw',
+		github: 'https://github.com/et0and',
 	},
 }

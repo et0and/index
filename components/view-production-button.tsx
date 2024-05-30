@@ -65,7 +65,7 @@ function ViewProductionButton({ href }: { href: string }) {
 					<div className='text-sm text-gray-500 hover:text-gray-700'>
 						<div className='flex items-center gap-2'>
 							<motion.h2 layout className='ml-1'>
-								View Production
+								View work
 							</motion.h2>
 							{show && (
 								<motion.div

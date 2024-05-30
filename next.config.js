@@ -10,14 +10,14 @@ const nextConfig = {
         mdxRs: true,
     },
     images: {
-        domains: [
-            'avatar.vercel.sh',
-            'cloudflare-ipfs.com',
-            'avatars.githubusercontent.com',
-            'picsum.photos',
-            'pbs.twimg.com'
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'tom.so',
+                port: '',
+            },
         ],
-    }
+    },
 }
 
 const withVercelToolbar = require('@vercel/toolbar/plugins/next')();

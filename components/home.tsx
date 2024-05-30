@@ -1,16 +1,14 @@
 'use client'
 
-import { Contact } from '@/components/contact'
 import { Profile } from '@/components/profile'
 import { Projects } from '@/components/projects'
 import { motion } from 'framer-motion'
-import { HeadlessMotion } from './headless-motion'
 
 const article = {
 	show: {
 		transition: {
 			staggerChildren: 0.25,
-			delayChildren: 0.5,
+			delayChildren: 0.1,
 		},
 	},
 }
@@ -27,7 +25,7 @@ const section = {
 		filter: 'blur(0px)',
 		transition: {
 			type: 'spring',
-			duration: 0.5,
+			duration: 0.2,
 			damping: 10,
 			mass: 0.75,
 			stiffness: 100,
@@ -35,25 +33,14 @@ const section = {
 	},
 }
 
-function Home({ projects, headless }: { projects: any[]; headless: any[] }) {
+function Home({ projects }: { projects: any[] }) {
 	return (
-		<motion.article
-			className='flex flex-col gap-8'
-			variants={article}
-			initial='hidden'
-			animate='show'
-		>
+		<motion.article className='flex flex-col gap-8' variants={article} initial='show'>
 			<motion.section variants={section} className='flex flex-col gap-2'>
 				<Profile />
 			</motion.section>
 			<motion.section variants={section} className='flex flex-col gap-2'>
 				<Projects projects={projects} />
-			</motion.section>
-			<motion.section variants={section} className='flex flex-col gap-2'>
-				<HeadlessMotion projects={headless} />
-			</motion.section>
-			<motion.section variants={section} className='flex flex-col gap-2'>
-				<Contact />
 			</motion.section>
 		</motion.article>
 	)
