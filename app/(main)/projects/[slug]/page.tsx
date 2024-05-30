@@ -22,7 +22,7 @@ export function generateMetadata({ params }: { params: any }) {
 
 	let { title, date: date, summary: description } = post.metadata
 
-	title = `${title} | Catalogue raisonné`
+	title = `${title} | Catalogue raisonné `
 
 	return {
 		title,
