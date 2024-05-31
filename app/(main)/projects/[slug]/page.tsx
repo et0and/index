@@ -62,7 +62,7 @@ export default function Blog({ params }: { params: any }) {
 						<ArrowLeftIcon />
 						<p className='hover:underline'>Home</p>
 					</Link>
-					<h1 className='view-transition-project-heading text-xl font-medium'>
+					<h1 className='view-transition-project-heading text-sm font-medium md:text-xl'>
 						{post.metadata.title}
 					</h1>
 					<h2>{post.metadata.date}</h2>
