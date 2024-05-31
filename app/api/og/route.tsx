@@ -16,7 +16,6 @@ export async function GET(request: Request) {
 		console.log(parameters)
 
 		// PARAMETERS
-
 		const hasTitle = searchParams.has('title')
 
 		// FONT
@@ -32,11 +31,7 @@ export async function GET(request: Request) {
 							<p tw='text-4xl tracking-tighter opacity-20 mb-0'>
 								Tom Hackshaw
 							</p>
-							{parameters.title && parameters.title.length > 20 ? (
-								<p tw='text-4xl tracking-tighter mb-0'>
-									{parameters.title.slice(0, 40)}...
-								</p>
-							) : (
+							{parameters.title && (
 								<p tw='text-4xl tracking-tighter mb-0'>{parameters.title}</p>
 							)}
 						</div>
